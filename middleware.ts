@@ -31,6 +31,8 @@ export function middleware(req: NextRequest) {
     console.log('url.pathname is: ', url.pathname);
   }
 
+  tenant = 'yakshaver';
+
   if (tenant) {
     return NextResponse.rewrite(new URL(`/${tenant}`, req.url));
   }
