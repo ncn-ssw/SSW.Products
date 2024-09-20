@@ -1,10 +1,15 @@
 "use client";
 
+import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function TenantHomePage() {
-  const pathname = usePathname();
-  console.log("pathname: ", pathname);  
+  const pathname = usePathname(); 
+
+  useEffect(() => {
+    console.log("pathname: ", pathname);
+  }, [pathname]);
+
   const tenant = pathname?.split('/')[1]; 
 
   return (
