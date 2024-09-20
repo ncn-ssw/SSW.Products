@@ -11,6 +11,7 @@ export function middleware(req: NextRequest) {
   let tenant = null;
 
   if (isDevelopment) {
+    console.log('url.pathname is: ', url.pathname);
     if (url.pathname === '/yakshaver') {
       tenant = 'yakshaver';
     } else if (url.pathname === '/timepro') {
