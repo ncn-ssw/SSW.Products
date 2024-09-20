@@ -1,4 +1,6 @@
-import { defineConfig } from "tinacms";
+import { Collection, defineConfig } from "tinacms";
+import { TimeProSchema } from "./collectionSchema/TimeProSchema";
+import { YakShaverSchema } from "./collectionSchema/YakShaverSchema";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -28,6 +30,8 @@ export default defineConfig({
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
     collections: [
+      TimeProSchema as Collection,
+      YakShaverSchema as Collection,
       {
         name: "post",
         label: "Posts",
