@@ -34,5 +34,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.rewrite(new URL(`/${tenant}`, req.url));
   }
 
-  return NextResponse.redirect('https://www.ssw.com.au/404');
+  // return NextResponse.redirect('https://www.ssw.com.au/404');
+  return NextResponse.next();
 }
