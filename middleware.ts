@@ -1,42 +1,38 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(req: NextRequest) {
-  const hostname = req.headers.get('host'); 
-  const url = req.nextUrl; 
+export function middleware(request: NextRequest) {
+  const hostname = request.headers.get('host');
+  const { pathname } = request.nextUrl;
 
-  console.log('Running in:', process.env.NODE_ENV);
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  // Define the domain-to-site mapping
+  const domainMap: Record<string, string> = {
+    'www.yakshaver.ai': 'yakshaver',
+    'tenant1.yakshaver.ai': 'yakshaver',
+    'tenant2.yakshaver.ai': 'timepro',
+    // 'yakshaver.ai': 'yakshaver',
+    'www.timepro.com': 'timepro',
+    // 'timepro.com': 'timepro',
+  };
 
-  let tenant = null;
+  
+  const site = domainMap[hostname || ''];
 
-  if (isDevelopment) {
-    console.log('url.pathname is: ', url.pathname);
-    if (url.pathname === '/yakshaver') {
-      tenant = 'yakshaver';
-    } else if (url.pathname === '/timepro') {
-      tenant = 'timepro';
-    }
-  } else {
-    if (hostname?.includes('yakshaver.ai')) {
-      tenant = 'yakshaver';
-    } else if (hostname?.includes('timepro.org')) {
-      tenant = 'timepro';
-    }
+  
+  if (!site) {
+    return NextResponse.next();
   }
 
-  if (isDevelopment) {
-    console.log('Local development environment detected.');
-    console.log('tenant', tenant);
-    console.log('url.pathname is: ', url.pathname);
-  }
+  
+  const rewriteUrl = new URL(request.url);
+  rewriteUrl.searchParams.set('site', site);
 
-  tenant = 'yakshaver';
-
-  if (tenant) {
-    return NextResponse.rewrite(new URL(`/${tenant}`, req.url));
-  }
-
-  // return NextResponse.redirect('https://www.ssw.com.au/404');
-  return NextResponse.next();
+  
+  return NextResponse.rewrite(rewriteUrl);
 }
+
+export const config = {
+  matcher: [
+    '/((?!api|_next|static|favicon.ico|.*\\..*).*)',
+  ],
+};
