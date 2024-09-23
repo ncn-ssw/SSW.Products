@@ -28,7 +28,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div>
     );
   } catch (error) {
-    const errorMsg = error
     console.error("Error fetching TinaCMS data:", error);
     return (
       <div>
