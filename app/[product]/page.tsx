@@ -20,7 +20,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <pre>{JSON.stringify(productData, null, 2)}</pre>    
       <p> UNDER HERE WE WILL RENDER THE BLOCKS</p>
       {/* TODO: investigate why this is erroring but working */}
-      {/* @ts-ignore */}
+      {/* @ts-expect-error */}
       <BlocksRenderer data={{ pageBlocks: productData.pageBlocks ?? null }} />
 
     </div>
