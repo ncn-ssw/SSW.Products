@@ -1,7 +1,6 @@
 import { defineConfig } from "tinacms";
 import { PagesSchema } from "./collectionSchema/pages";
 
-
 const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
@@ -14,7 +13,7 @@ export default defineConfig({
   token: process.env.TINA_TOKEN, 
 
   build: {
-    outputFolder: process.env.NODE_ENV === 'production' ? 'admin' : 'admin',
+    outputFolder: 'admin', 
     publicFolder: "public",
   },
   media: {
