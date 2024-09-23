@@ -1,10 +1,14 @@
-"use client"; // Make sure to add this if you are using Next.js App Router
+"use client"; // Ensure this is added if you are using the App Router
 
 import { useRouter } from 'next/router';
 
 export default function Page() {
   const router = useRouter();
-  const { site, filename } = router.query; // Retrieve site and filename from query params
+  const { site, filename } = router.query; 
+
+  if (!site) {
+    return <div>Error: Tenant not found</div>;
+  }
 
   return (
     <div>
