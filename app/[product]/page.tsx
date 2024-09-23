@@ -7,18 +7,14 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = params.product;
 
-  console.log('Found product: ', product)
-
-  console.log(`Querying TinaCMS for ${product}/home.json`)
+  console.log('Found product:', product);
+  console.log(`Querying TinaCMS for ${product}/home.json`);
 
   try {
-    
     const pageContent = await client.queries.pages({
       relativePath: `${product}/home.json`,
     });
 
-  
-    
     const productData = pageContent?.data?.pages || {};
 
     return (
@@ -33,6 +29,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div>
         <h1>Product: {product}</h1>
         <p>{(error as Error).message}</p>
+        <pre>{JSON.stringify(error, null, 2)}</pre> {/* Log the full error details */}
         <p>Error fetching data.</p>
       </div>
     );
