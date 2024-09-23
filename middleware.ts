@@ -10,25 +10,22 @@ import type { NextRequest } from 'next/server';
  * - For production, it matches the domain to a location and rewrites the URL 
  *   accordingly.
  *
- * @param {NextRequest} request - The incoming HTTP request object.
- * @returns {NextResponse} - The response object with the rewritten URL.
+ * @param {NextRequest} request 
+ * @returns {NextResponse} 
  */
 export function middleware(request: NextRequest) {
-  // Retrieve the hostname from the request headers
   const hostname = request.headers.get('host');
-  
-  // Extract the pathname from the requested URL (e.g., /about, /contact)
   const { pathname } = request.nextUrl;
-  // Check if the request is coming from a local development environment
+  
   const isLocal =
     hostname?.includes('localhost') || hostname?.includes('127.0.0.1'); 
-  // Variable to store the response after applying the rewrite rules
+  
   let nextResponse;
-  // Retrieve the list of locations and corresponding domains from environment variables
+  
   const locationsList = process.env.NEXT_PUBLIC_PRODUCT_LIST
     ? JSON.parse(process.env.NEXT_PUBLIC_PRODUCT_LIST)
     : [];
-  // If running locally, rewrite the URL to include the default location
+  
   if (isLocal) {
     nextResponse = NextResponse.rewrite(
       new URL(

@@ -1,21 +1,9 @@
-// app/[product]/page.tsx
-"use client"; // This makes it a Client Component
+interface ProductPageProps {
+  params: { product: string };
+}
 
-import { useEffect, useState } from 'react';
-
-export default function ProductPage() {
-  const [product, setProduct] = useState(''); // State to store the product name
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const hostname = window.location.hostname; // Get the current hostname
-      // Extract the subdomain (the part before the first dot)
-      const productFromDomain = hostname.split('.')[0];
-      setProduct(productFromDomain);
-    }
-  }, []);
-
-  console.log(product);
+export default function ProductPage({ params }: ProductPageProps) {
+  const { product } = params;
 
   return (
     <div>
