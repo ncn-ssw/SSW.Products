@@ -15,8 +15,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
       relativePath: `${product}/home.json`,
     });
 
-    // const productData = pageContent?.data?.pages || {};
-    const productData = {};
+    const productData = pageContent?.data?.pages || {};
+    
 
     return (
       <div>
