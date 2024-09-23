@@ -1,10 +1,10 @@
-"use client"; // This ensures the file is treated as a client component
+"use client"; // Ensure this is added if you are using the App Router
 
 import { useRouter } from 'next/router';
 
 export default function Page() {
   const router = useRouter();
-  const { site, filename } = router.query; // Access the dynamic params
+  const { site } = router.query; // Removed `filename` from the destructuring
 
   if (!site) {
     return <div>Error: Tenant not found</div>;
