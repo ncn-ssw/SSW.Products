@@ -1,3 +1,9 @@
 {
-  "title": "test-YakShaver"
+  "title": "test-YakShaver",
+  "pageBlocks": [
+    {
+      "title": "now again",
+      "_template": "ExampleHero"
+    }
+  ]
 }

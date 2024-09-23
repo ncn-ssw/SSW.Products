@@ -1,4 +1,5 @@
 import client from '../../tina/__generated__/client'; 
+import { blocksRenderer as BlocksRenderer } from '../../components/shared/Blocks/blocksRenderer';
 
 interface ProductPageProps {
   params: { product: string };
@@ -11,15 +12,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
   console.log(`Querying TinaCMS for ${product}/home.json`);
 
   const productData = await getPage(product);
+  console.log(productData.pageBlocks);
 
   return (
     <div>
       <h1>Product: {product}</h1>
-      <pre>{JSON.stringify(productData, null, 2)}</pre>
+      <pre>{JSON.stringify(productData, null, 2)}</pre>    
+      <p> UNDER HERE WE WILL RENDER THE BLOCKS</p>
+      {/* TODO: investigate why this is erroring but working */}
+      {/* @ts-ignore */}
+      <BlocksRenderer data={{ pageBlocks: productData.pageBlocks ?? null }} />
+
     </div>
   );
 }
-
 
 async function getPage(product: string) {
   try {
