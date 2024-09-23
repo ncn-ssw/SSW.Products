@@ -1,18 +1,25 @@
 // app/[product]/page.tsx
-"use client"; // Add this directive to make the component a Client Component
+"use client"; // This makes it a Client Component
 
-import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function ProductPage() {
-  const pathname = usePathname(); // Get the current path
-  console.log(pathname);
+  const [product, setProduct] = useState(''); // State to store the product name
 
-  // Extract the product name from the path, ensuring it's not null
-  const product = pathname ? pathname.split('/')[1] : 'Unknown Product';
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname; // Get the current hostname
+      // Extract the subdomain (the part before the first dot)
+      const productFromDomain = hostname.split('.')[0];
+      setProduct(productFromDomain);
+    }
+  }, []);
+
+  console.log(product);
 
   return (
     <div>
-      <h1>Welcome to the {product} page</h1>
+      <h1>Product: {product}</h1>
       <p>This is the content for the product: {product}</p>
     </div>
   );
