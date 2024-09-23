@@ -4,25 +4,24 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host');
 
-  // Define your domain-to-site mapping
+  // Define the mapping for tenant domains to tenant names
   const domainMap: Record<string, string> = {
     'tenant1.yakshaver.ai': 'tenant1',
     'tenant2.yakshaver.ai': 'tenant2',
   };
 
-  // Determine the site based on the hostname
-  const site = domainMap[hostname || ''];
+  // Determine the tenant based on the hostname
+  const tenant = domainMap[hostname || ''];
 
-  // If the site is not found in the domain map, continue to the default
-  if (!site) {
-    return NextResponse.next();
+  if (tenant) {
+    // Rewrite to the dynamic [filename] path
+    const rewriteUrl = new URL(request.url);
+    rewriteUrl.pathname = `/${tenant}`; // This should map to [filename]
+    return NextResponse.rewrite(rewriteUrl);
   }
 
-  // Rewrite to the dynamic [filename] path with the site as a query parameter
-  const rewriteUrl = new URL(request.url);
-  rewriteUrl.searchParams.set('site', site);
-
-  return NextResponse.rewrite(rewriteUrl);
+  // Default handling if no tenant matches
+  return NextResponse.next();
 }
 
 export const config = {
