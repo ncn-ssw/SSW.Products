@@ -12,11 +12,12 @@ export function middleware(request: NextRequest) {
     ? JSON.parse(process.env.NEXT_PUBLIC_PRODUCT_LIST)
     : [];
 
-  const pathSegments = pathname
-    .split("/")
-    .filter((segment) => segment.length > 0);
+  // Extract the path segments (excluding empty strings)
+  const pathSegments = pathname.split("/").filter((segment) => segment.length > 0);
 
-  if (pathname === "/admin/index.html" || pathname.startsWith("/admin/")) {
+  // Check if the request is for TinaCMS admin panel or editing route
+  if (pathname.startsWith("/admin") || pathname.startsWith("/admin/")) {
+    // Allow TinaCMS admin paths to be handled without rewriting
     return NextResponse.next();
   }
 
