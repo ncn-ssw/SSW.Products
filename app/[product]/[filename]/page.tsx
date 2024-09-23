@@ -1,9 +1,11 @@
 // app/[filename]/page.tsx
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 export default function FilePage() {
-  const router = useRouter();
-  const { filename } = router.query;
+  const pathname = usePathname(); // Get the current path
+
+  // Extract the filename from the path, ensuring it's not null
+  const filename = pathname ? pathname.split('/')[1] : 'Unknown File';
 
   return (
     <div>
