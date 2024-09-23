@@ -1,9 +1,12 @@
-import { usePathname, useSearchParams } from 'next/navigation';
+// app/[product]/page.tsx
+"use client"; // Add this directive to make the component a Client Component
+
+import { usePathname } from 'next/navigation';
 
 export default function ProductPage() {
   const pathname = usePathname(); // Get the current path
 
-  // Ensure pathname is not null
+  // Extract the product name from the path, ensuring it's not null
   const product = pathname ? pathname.split('/')[1] : 'Unknown Product';
 
   return (

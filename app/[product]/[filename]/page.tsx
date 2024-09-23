@@ -1,11 +1,13 @@
-// app/[filename]/page.tsx
+// app/[product]/[filename]/page.tsx
+"use client"; // Add this directive to make the component a Client Component
+
 import { usePathname } from 'next/navigation';
 
 export default function FilePage() {
   const pathname = usePathname(); // Get the current path
 
   // Extract the filename from the path, ensuring it's not null
-  const filename = pathname ? pathname.split('/')[1] : 'Unknown File';
+  const filename = pathname ? pathname.split('/')[2] : 'Unknown File';
 
   return (
     <div>
