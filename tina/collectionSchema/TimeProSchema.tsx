@@ -1,7 +1,7 @@
 export const TimeProSchema = {
     label: "TimePro Pages",
     name: "timePro",
-    path: "content/timePro/blocksPages",
+    path: "content/TimePro/blocksPages",
     format: "json",
     fields: [
       {

@@ -1,7 +1,7 @@
 export const YakShaverSchema = {
   label: "YakShaver Pages",
   name: "yakShaver",
-  path: "content/yakShaver/blocksPages",
+  path: "content/YakShaver/blocksPages",
   format: "json",
   fields: [
     {
