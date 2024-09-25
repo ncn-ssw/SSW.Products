@@ -1,5 +1,5 @@
 import "../globals.css";
-import NavBar from "../../components/YakShaver/NavBarServer";
+import NavBar from "../../components/shared/NavBarServer";
 
 export default function RootLayout({
   children,
@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <NavBar />
+      {/* <NavBar /> */}
       <body
         className="min-h-screen"
         style={{
