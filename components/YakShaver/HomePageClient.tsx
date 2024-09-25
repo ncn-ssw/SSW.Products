@@ -18,11 +18,9 @@ export default function ProductPageClient({ query, data, variables }: ProductPag
     data,
   });
 
-  const pageData = tinaData.data.pages;
-
   return (
     <div className="pt-40 px-80">
-      <BlocksRenderer data={{ pageBlocks: pageData.pageBlocks ?? null }} />
+      <BlocksRenderer data={{ pageBlocks: tinaData.data.pages.pageBlocks ?? null }} />
     </div>
   );
 }
