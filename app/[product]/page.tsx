@@ -17,7 +17,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div>
-      <h1>Product: {product}</h1>
+      <h1 className="text-white text-4xl font-bold">Product: {product}</h1>
       <pre>{JSON.stringify(productData, null, 2)}</pre>
       <p>UNDER HERE WE WILL RENDER THE BLOCKS</p>
       {/* @ts-expect-error This is needed due to a type mismatch */}

@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   // Exclude Next.js internal paths from middleware processing
   if (
     pathname.startsWith("/_next") ||   // Exclude all Next.js static assets
-    pathname.startsWith("/favicon.ico") || // Exclude favicon
+    pathname === "/favicon.ico" || // Exclude favicon
     pathname.startsWith("/static")     // Exclude any other static paths, if applicable
   ) {
     return NextResponse.next();

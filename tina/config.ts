@@ -1,5 +1,6 @@
 import { defineConfig } from "tinacms";
 import { PagesSchema } from "./collectionSchema/pages";
+import { navigationBarCollection } from "./collectionSchema/navbar";
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -27,6 +28,7 @@ export default defineConfig({
   schema: {
     collections: [
       PagesSchema, 
+      navigationBarCollection,
     ],
   },
 });
