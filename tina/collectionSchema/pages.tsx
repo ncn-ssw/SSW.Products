@@ -13,17 +13,15 @@ export const PagesSchema: Collection = {
       label: "Title",
     },
     {
-      type: 'object',
-      name: 'pageBlocks',
-      label: 'Page Blocks',
+      type: "object",
+      name: "pageBlocks",
+      label: "Page Blocks",
       list: true,
       ui: {
         visualSelector: true,
       },
-      templates: [
-        ExampleHeroTemplate
-      ]
-    }
+      templates: [ExampleHeroTemplate],
+    },
     // Add more fields here as needed
   ],
 };
