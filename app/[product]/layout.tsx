@@ -1,5 +1,5 @@
 import "../globals.css";
-import NavBar from "../../components/YakShaver/NavBar";
+import NavBar from "../../components/YakShaver/NavBarServer";
 
 export default function RootLayout({
   children,

@@ -1,46 +1,15 @@
-"use client"; 
+"use client";
 
 import { useEffect, useState } from "react";
 import { NavigationBarQuery } from "../../tina/__generated__/types";
 import Image from "next/image";
-import client from "../../tina/__generated__/client";
 
-export default function NavBar() {
-  const [results, setResults] = useState<NavigationBarQuery | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [scrolled, setScrolled] = useState(false);
+interface NavBarClientProps {
+  results: NavigationBarQuery | null;
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await client.queries.navigationBar({
-          relativePath: "YakShaver/YakShaver-NavigationBar.json",
-        });
-        setResults(data);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  if (loading) return <div>Loading...</div>;
+export default function NavBarClient({ results }: NavBarClientProps) {
+  const [scrolled] = useState(false);
 
   const { navigationBar } = results || {};
   const navItems = navigationBar?.navItem;
