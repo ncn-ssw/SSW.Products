@@ -1,0 +1,10 @@
+{
+  "Logo": "/TimePro/TimePro horizontal.png",
+  "navItem": [
+    {
+      "label": "test-timepro",
+      "href": "/timepro",
+      "_template": "stringItem"
+    }
+  ]
+}
