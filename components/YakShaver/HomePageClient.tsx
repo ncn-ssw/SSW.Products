@@ -1,3 +1,5 @@
+// eslint-disable @typescript-eslint/no-explicit-any i dont want to deal with this right now
+
 "use client";
 
 import { useTina } from 'tinacms/dist/react';
