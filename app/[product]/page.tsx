@@ -16,7 +16,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   console.log(productData.pageBlocks);
 
   return (
-    <div>
+    <div className="pt-40 px-80">
       <h1 className="text-white text-4xl font-bold">Product: {product}</h1>
       <pre>{JSON.stringify(productData, null, 2)}</pre>
       <p>UNDER HERE WE WILL RENDER THE BLOCKS</p>
