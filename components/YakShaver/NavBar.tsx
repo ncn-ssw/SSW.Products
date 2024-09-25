@@ -49,7 +49,7 @@ export default function NavBar() {
   return (
     <nav
       className={`${
-        scrolled ? "bg-green-600" : "bg-transparent"
+        scrolled ? "bg-[rgba(51,51,51,0.9)] backdrop-blur-sm" : "bg-transparent"
       } text-white sticky top-0 w-full transition-colors duration-300`}
     >
       <ul className="flex items-center space-x-4">
