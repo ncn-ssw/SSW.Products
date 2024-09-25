@@ -1,4 +1,4 @@
-// eslint-disable @typescript-eslint/no-explicit-any i dont want to deal with this right now
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 "use client";
 
