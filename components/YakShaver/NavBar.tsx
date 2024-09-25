@@ -1,4 +1,4 @@
-"use client"; // Marks this file as a client component
+"use client"; 
 
 import { useEffect, useState } from "react";
 import { NavigationBarQuery } from "../../tina/__generated__/types";
@@ -7,27 +7,51 @@ import client from "../../tina/__generated__/client";
 
 export default function NavBar() {
   const [results, setResults] = useState<NavigationBarQuery | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await client.queries.navigationBar({
-        relativePath: "YakShaver/YakShaver-NavigationBar.json",
-      });
-      setResults(data);
+      try {
+        const { data } = await client.queries.navigationBar({
+          relativePath: "YakShaver/YakShaver-NavigationBar.json",
+        });
+        setResults(data);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
   }, []);
 
-  if (!results) return <div>Loading...</div>;
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
 
-  const { navigationBar } = results;
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
+  if (loading) return <div>Loading...</div>;
+
+  const { navigationBar } = results || {};
   const navItems = navigationBar?.navItem;
   const logo = navigationBar?.Logo;
 
   return (
-    <nav className="bg-transparent text-white sticky top-0 w-full">
+    <nav
+      className={`${
+        scrolled ? "bg-green-600" : "bg-transparent"
+      } text-white sticky top-0 w-full transition-colors duration-300`}
+    >
       <ul className="flex items-center space-x-4">
         {logo && (
           <li>
