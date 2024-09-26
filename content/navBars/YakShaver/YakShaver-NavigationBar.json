@@ -1,6 +1,6 @@
 {
   "Logo": "/YakShaver/YakShaver horizontal.png",
-  "navItem": [
+  "leftNavItem": [
     {
       "label": "Pricing",
       "href": "/pricing",

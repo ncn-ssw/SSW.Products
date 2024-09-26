@@ -27,10 +27,11 @@ export default function NavBarClient({ results }: NavBarClientProps) {
   }, []);
 
   const { navigationBar } = results || {};
-  const navItems = navigationBar?.navItem;
+  const navItems = navigationBar?.leftNavItem;
   const logo = navigationBar?.Logo;
 
-  
+
+  console.log(navItems);
   const navbarHeight = 120; 
 
   return (
@@ -48,7 +49,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
             </li>
           )}
           {navItems?.map((item, index) => {
-            if (item?.__typename === "NavigationBarNavItemStringItem" && item.label && item.href) {
+            if (item?.__typename === "NavigationBarLeftNavItemStringItem" && item.label && item.href) {
               return (
                 <li key={index} className="flex items-center">
                   <a href={item.href} className="hover:underline text-xl font-helvetica">
