@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { NavigationBarQuery } from "../../tina/__generated__/types";
-import Image from "next/image";
+import { useEffect, useState } from 'react';
+import { NavigationBarQuery } from '../../tina/__generated__/types';
+import Image from 'next/image';
 
 interface NavBarClientProps {
   results: NavigationBarQuery | null;
@@ -20,9 +20,9 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -30,29 +30,31 @@ export default function NavBarClient({ results }: NavBarClientProps) {
   const navItems = navigationBar?.leftNavItem;
   const logo = navigationBar?.Logo;
 
-
-  console.log(navItems);
-  const navbarHeight = 120; 
+  const navbarHeight = 120;
 
   return (
     <>
       <nav
         className={`${
-          scrolled ? "bg-[rgba(51,51,51,0.9)] backdrop-blur-sm" : "bg-transparent"
+          scrolled ? 'bg-[rgba(51,51,51,0.9)] backdrop-blur-md' : 'bg-transparent'
         } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300`}
         style={{ height: `${navbarHeight}px` }}
       >
-        <ul className="flex items-center space-x-4 p-4">
+        <ul className="pl-20 flex items-center justify-start h-full space-x-20">
           {logo && (
-            <li>
+            <li className="flex items-center">
               <Image src={logo} alt="Logo" width={200} height={200} />
             </li>
           )}
           {navItems?.map((item, index) => {
-            if (item?.__typename === "NavigationBarLeftNavItemStringItem" && item.label && item.href) {
+            if (
+              item?.__typename === 'NavigationBarLeftNavItemStringItem' &&
+              item.label &&
+              item.href
+            ) {
               return (
                 <li key={index} className="flex items-center">
-                  <a href={item.href} className="hover:underline text-xl font-helvetica">
+                  <a href={item.href} className="hover:underline text-2xl font-helvetica">
                     {item.label}
                   </a>
                 </li>
@@ -63,7 +65,6 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         </ul>
       </nav>
 
-     
       <div style={{ marginTop: `${navbarHeight}px` }}></div>
     </>
   );

@@ -1,4 +1,7 @@
-import { HeroBlock } from "./ExampleHero";
+import FeatureBlocks from "./Blocks/Features";
+import { FAQTemplate } from "./Blocks/FAQ.template";
+import FAQ from "./Blocks/FAQ";
+import FeatureHorizontalCarousel from "./Blocks/FeatureCarousel";
 
 // Define the expected shape of the block
 interface Block {
@@ -17,15 +20,20 @@ const Blocks = ({ blocks }: BlocksProps) => {
   return blocks.map((block: Block, index: number) => {
     console.log(block.__typename);
     switch (block.__typename) {
-      case "PagesPageBlocksExampleHero":
-        return <HeroBlock key={index} data={block} index={index} />;
+      case "PagesPageBlocksFeatures":
+        return <FeatureBlocks key={index} data={block} index={index} />;
+      case "PagesPageBlocksFaq":
+        return <FAQ key={index} data={block} index={index} />;
+      case "PagesPageBlocksFeatureCarousel":
+        return (
+          <FeatureHorizontalCarousel key={index} data={block} index={index} />
+        );
       default:
-        return null; // Handle other cases or return null for unmatched types
+        return null;
     }
   });
 };
 
-// Define the shape of the data prop for blocksRenderer
 interface BlocksRendererProps {
   data: {
     pageBlocks: Block[] | null;
