@@ -35,10 +35,10 @@ const Blocks = ({ blocks }: BlocksProps) => {
         }
         return null;
       case 'PagesPageBlocksFaq':
-        // @ts-ignore
+        // @ts-expect-error
         return <FAQ key={index} data={block} index={index} />;
       case 'PagesPageBlocksFeatureCarousel':
-        // @ts-ignore
+        // @ts-expect-error
         return <FeatureHorizontalCarousel key={index} data={block} index={index} />;
       default:
         return null;

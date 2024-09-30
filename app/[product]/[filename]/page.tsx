@@ -1,7 +1,6 @@
 "use client"; 
 
 import { usePathname } from 'next/navigation';
-import client from '../../../tina/__generated__/client';
 
 export default function FilePage() {
   const pathname = usePathname(); 

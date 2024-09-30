@@ -19,13 +19,24 @@ interface FeatureCarouselProps {
 const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
+
+  useEffect(() => {
+    if (isUserInteracting) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % (data?.carouselItems.length || 1));
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, [isUserInteracting, data?.carouselItems.length]);
+
   if (!data || !data.carouselItems || data.carouselItems.length === 0) {
     return <div>No data available</div>;
   }
 
   const handleTabClick = (index: number) => {
     setActiveIndex(index);
-    setIsUserInteracting(true); 
+    setIsUserInteracting(true);
   };
 
   const activeItem = data.carouselItems[activeIndex];
@@ -66,16 +77,6 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     }
     return null;
   };
-
-  useEffect(() => {
-    if (isUserInteracting) return; 
-
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % data.carouselItems.length);
-    }, 7000);
-
-    return () => clearInterval(interval); 
-  }, [isUserInteracting, data.carouselItems.length]);
 
   return (
     <div className="feature-carousel text-center mb-40 px-4 md:px-0" data-tina-field={tinaField(data, 'carouselItems')}>
