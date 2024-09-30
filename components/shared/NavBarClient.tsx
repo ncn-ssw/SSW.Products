@@ -40,7 +40,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300`}
         style={{ height: `${navbarHeight}px` }}
       >
-        <ul className="pl-20 flex items-center justify-start h-full space-x-20">
+        <ul className="pl-20 flex items-center justify-start h-full space-x-15 xl:space-x-20">
           {logo && (
             <li className="flex items-center">
               <Image src={logo} alt="Logo" width={200} height={200} />
