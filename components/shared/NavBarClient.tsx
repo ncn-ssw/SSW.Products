@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { NavigationBarQuery } from '../../tina/__generated__/types';
-import Image from 'next/image';
-import { BookingButton } from './Blocks/BookingButton';
+import { useEffect, useState } from "react";
+import { NavigationBarQuery } from "../../tina/__generated__/types";
+import Image from "next/image";
+import { BookingButton } from "./Blocks/BookingButton";
 
 interface NavBarClientProps {
   results: NavigationBarQuery | null;
@@ -21,9 +21,9 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -32,30 +32,33 @@ export default function NavBarClient({ results }: NavBarClientProps) {
   const rightNavItems = navigationBar?.rightNavItem;
   const logo = navigationBar?.Logo;
 
-  console.log('nav bar', navigationBar)
+  console.log("nav bar", navigationBar);
 
   const navbarHeight = 120;
 
-  //@ts-ignore need to investigate after
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderNavItem = (item: any, index: number) => {
     switch (item?.__typename) {
-      case 'NavigationBarLeftNavItemStringItem':
-      case 'NavigationBarRightNavItemStringItem':
+      case "NavigationBarLeftNavItemStringItem":
+      case "NavigationBarRightNavItemStringItem":
         return (
           <li key={index} className="flex items-center">
-            <a href={item.href} className="hover:underline text-2xl font-helvetica">
+            <a
+              href={item.href}
+              className="hover:underline text-2xl font-helvetica"
+            >
               {item.label}
             </a>
           </li>
         );
 
-      case 'NavigationBarLeftNavItemGroupOfStringItems':
-      case 'NavigationBarRightNavItemGroupOfStringItems':
+      case "NavigationBarLeftNavItemGroupOfStringItems":
+      case "NavigationBarRightNavItemGroupOfStringItems":
         return (
           <li key={index} className="flex items-center group relative">
             <span className="cursor-pointer">{item.label}</span>
             <ul className="absolute top-full left-0 bg-white text-black hidden group-hover:block mt-2 space-y-1 p-2 rounded shadow-lg">
-              {/* @ts-ignore need to investigate after */}
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {item.items?.map((subItem: any, subIndex: number) => (
                 <li key={subIndex}>
                   <a href={subItem.href} className="hover:underline">
@@ -67,17 +70,17 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           </li>
         );
 
-      case 'NavigationBarLeftNavItemModalButton':
-      case 'NavigationBarRightNavItemModalButton':
+      case "NavigationBarLeftNavItemModalButton":
+      case "NavigationBarRightNavItemModalButton":
         return (
           <li key={index} className="flex items-center">
             <button
               className={`px-4 py-2 rounded ${
-                item.variant === 'primary'
-                  ? 'bg-blue-500 text-white'
-                  : item.variant === 'secondary'
-                  ? 'bg-gray-500 text-white'
-                  : 'bg-white text-black'
+                item.variant === "primary"
+                  ? "bg-blue-500 text-white"
+                  : item.variant === "secondary"
+                  ? "bg-gray-500 text-white"
+                  : "bg-white text-black"
               }`}
             >
               {item.label}
@@ -85,7 +88,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           </li>
         );
 
-      case 'NavigationBarRightNavItemBookingButton': 
+      case "NavigationBarRightNavItemBookingButton":
         return (
           <li key={index} className="flex items-center">
             <BookingButton title={item.Title} />
@@ -101,7 +104,9 @@ export default function NavBarClient({ results }: NavBarClientProps) {
     <>
       <nav
         className={`${
-          scrolled ? 'bg-[rgba(51,51,51,0.9)] backdrop-blur-md' : 'bg-transparent'
+          scrolled
+            ? "bg-[rgba(51,51,51,0.9)] backdrop-blur-md"
+            : "bg-transparent"
         } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center`}
         style={{ height: `${navbarHeight}px` }}
       >

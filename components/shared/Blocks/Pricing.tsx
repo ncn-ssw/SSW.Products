@@ -25,7 +25,7 @@ interface AllPlan {
 
 interface PricingData {
   title?: string;
- // @ts-ignore need to investigate aft
+//eslint-disable-next-line @typescript-eslint/ban-ts-comment 
   description?: any;
   allPlans?: AllPlan[];
   plans?: Plan[];
