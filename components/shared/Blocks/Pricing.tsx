@@ -1,21 +1,21 @@
 import React from "react";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { TiTick } from "react-icons/ti";
 import Actions from "./ActionsButton";
 
 interface PlanAction {
-  label: string 
-  url: string 
-  variant?: string 
-  size?: string 
+  label: string;
+  url: string;
+  variant?: string;
+  size?: string;
 }
 
 interface Plan {
   planTier: string;
   planDescription: string;
   price: string;
-  subPriceText: string 
-  actions: PlanAction 
+  subPriceText: string;
+  actions: PlanAction;
   isReccomended: boolean;
 }
 
@@ -25,8 +25,7 @@ interface AllPlan {
 
 interface PricingData {
   title?: string;
-//eslint-disable-next-line @typescript-eslint/ban-ts-comment 
-  description?: any;
+  description?:  TinaMarkdownContent;
   allPlans?: AllPlan[];
   plans?: Plan[];
 }
@@ -70,7 +69,6 @@ const Pricing: React.FC<PricingProps> = ({ data }) => {
           </div>
         )}
 
-        
         {plans &&
           plans.length > 0 &&
           plans.map((plan, index) => (
@@ -86,7 +84,9 @@ const Pricing: React.FC<PricingProps> = ({ data }) => {
                 <div className="mb-2 flex items-center justify-between">
                   <h3 className="text-3xl">{plan.planTier}</h3>
                   {plan.isReccomended && (
-                    <p className="text-sm bg-gray-300 bg-opacity-40 rounded-full px-2 py-1">Most Popular</p>
+                    <p className="text-sm bg-gray-300 bg-opacity-40 rounded-full px-2 py-1">
+                      Most Popular
+                    </p>
                   )}
                 </div>
               )}
