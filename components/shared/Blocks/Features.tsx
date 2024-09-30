@@ -1,6 +1,7 @@
 import React from 'react';
 import Actions from './ActionsButton';
 import { tinaField } from 'tinacms/dist/react';
+import Image from 'next/image';
 
 type ActionButton = {
   label: string;
@@ -34,11 +35,13 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
         mediaItem.image
       ) {
         return (
-          <img
+          <Image
             src={mediaItem.image}
             alt={feature.headline}
             className="w-full h-auto object-cover"
             data-tina-field={tinaField(mediaItem, 'image')}
+            width={1000}
+            height={1000}
           />
         );
       }
@@ -53,7 +56,7 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
             <iframe
               src={mediaItem.src}
               title={feature.headline}
-              className="w-full h-full rounded-lg shadow-lg"
+              className="w-full xl:h-[500px] rounded-lg shadow-lg"
               allowFullScreen
               data-tina-field={tinaField(mediaItem, 'src')}
             />
@@ -66,14 +69,14 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
 
   return (
     <div
-      className={`flex flex-col-reverse lg:flex-row w-full items-center gap-8 ${
+      className={`flex flex-col-reverse lg:flex-row w-full items-center gap-12 ${
         feature.isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
       } ${feature.removeBottomPadding ? '' : 'mb-60'} pb-10 lg:pb-0 px-4 xl:px-20`}  
     >
       {/* Left Column: Headline, Text, and Buttons */}
-      <div className="flex-1 flex flex-col gap-4">
+      <div className="lg:w-2/7 w-full flex flex-col gap-4">
         <h2
-          className="lg:text-6xl md:text-5xl text-4xl text-white font-helvetica tracking-wide mb-4"
+          className="lg:text-5xl md:text-5xl text-4xl text-white font-helvetica tracking-wide mb-4"
           data-tina-field={tinaField(feature, 'headline')}
         >
           {feature.headline}
@@ -95,7 +98,7 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
 
       {/* Right Column: Media */}
       <div
-        className="flex-1 flex items-center justify-center w-full h-full"
+        className="lg:w-6/10 xl:w-7/10 w-full flex items-center justify-center h-full"
         data-tina-field={tinaField(feature, 'media')}
       >
         {renderMedia()}
@@ -129,6 +132,5 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
     </section>
   );
 };
-
 
 export default FeatureBlocks;

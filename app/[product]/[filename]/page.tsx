@@ -5,8 +5,20 @@ import { usePathname } from 'next/navigation';
 export default function FilePage() {
   const pathname = usePathname(); 
 
-  
-  const filename = pathname ? pathname.split('/')[2] : 'Unknown File';
+  let filename;
+
+  if(process.env.NODE_ENV === 'development')
+  {
+    filename = pathname ? pathname.split('/')[1] : 'Unknown File';
+    console.log('dev')
+  }else
+  {
+    filename = pathname ? pathname.split('/')[2] : 'Unknown File';
+    console.log('prod')
+  }
+
+  console.log('filename i found was')
+
 
   return (
     <div>

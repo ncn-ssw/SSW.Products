@@ -43,7 +43,7 @@ const FAQ = ({ data }: { data: FAQData }) => {
               <FaPlus className="ml-auto" />
             </button>
             {activeIndex === index && (
-              <div className="px-4 py-2">
+              <div className="px-4 pb-4">
                 <p data-tina-field={tinaField(item, 'answer')}>{item.answer}</p>
               </div>
             )}

@@ -11,5 +11,11 @@
       "href": "/about",
       "_template": "stringItem"
     }
+  ],
+  "rightNavItem": [
+    {
+      "Title": "TALK TO US",
+      "_template": "BookingButton"
+    }
   ]
 }

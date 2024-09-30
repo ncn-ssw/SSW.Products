@@ -13,7 +13,7 @@ type ActionsProps = {
 };
 
 const VARIANT_STYLES: Record<ActionButton["variant"], string> = {
-  solidRed: "bg-red-500 text-white",
+  solidRed: "bg-[#CC4141] text-white",
   solidWhite: "bg-white text-black border border-black",
   outlinedWhite: "border border-white text-white",
 };

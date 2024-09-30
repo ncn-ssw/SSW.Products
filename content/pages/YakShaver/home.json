@@ -8,17 +8,10 @@
           "text": "Don't waste another minute figuring out who can fix the problem. With YakShaver, the right person gets notified instantly, saving you hours of frustration",
           "buttons": [
             {
-              "label": "REGISTER NOW",
+              "label": "BOOK A DEMO",
               "variant": "solidRed",
               "size": "large",
-              "url": "/home",
-              "_template": "actions"
-            },
-            {
-              "label": "BOOK A DEMO",
-              "variant": "solidWhite",
-              "size": "large",
-              "url": "/home",
+              "url": "https://outlook.office.com/bookwithme/user/97ccb01d46744eed9ad7ff2c52c3ade6@ssw.com.au/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ep=mlink",
               "_template": "actions"
             }
           ],
@@ -95,7 +88,7 @@
               "label": "SCHEDULE CALL",
               "variant": "solidRed",
               "size": "large",
-              "url": "/",
+              "url": "https://outlook.office.com/bookwithme/user/97ccb01d46744eed9ad7ff2c52c3ade6@ssw.com.au/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ep=mlink",
               "_template": "actions"
             }
           ],

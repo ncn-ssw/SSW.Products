@@ -1,4 +1,5 @@
 import { Collection } from "tinacms";
+import { bookingButtonSchema } from "../../components/shared/Blocks/BookingButtom.template";
 
 export const navigationBarCollection: Collection = {
   label: 'Navigation Bar',
@@ -185,46 +186,9 @@ export const navigationBarCollection: Collection = {
           ],
         },
         {
-          label: 'Modal Button',
-          name: 'modalButton',
-          ui: {
-            itemProps: (item) => {
-              return { label: '🍌 ' + item?.label };
-            },
-            defaultItem: {
-              variant: 'default',
-              label: 'Secondary Action',
-              icon: false,
-              size: 'medium',
-            },
-          },
-          fields: [
-            {
-              name: 'label',
-              label: 'Label',
-              type: 'string',
-            },
-            {
-              name: 'variant',
-              label: 'Variant',
-              type: 'string',
-              options: ['default', 'primary', 'secondary'],
-            },
-            {
-              name: 'size',
-              label: 'Size',
-              type: 'string',
-              options: ['small', 'medium', 'large'],
-            },
-            {
-              name: 'icon',
-              label: 'Icon',
-              type: 'boolean',
-            },
-          ],
-        },
+          ...bookingButtonSchema
+        }
       ]
-      
     }
   ],
 };
