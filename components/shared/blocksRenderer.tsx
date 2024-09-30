@@ -3,14 +3,14 @@ import { FAQTemplate } from "./Blocks/FAQ.template";
 import FAQ from "./Blocks/FAQ";
 import FeatureHorizontalCarousel from "./Blocks/FeatureCarousel";
 
-// Define the expected shape of the block
+
 interface Block {
   __typename: string;
   title?: string | null;
-  // Add any other properties your block may have
+  
 }
 
-// Define the props for the Blocks component
+
 interface BlocksProps {
   blocks: Block[] | null;
 }
