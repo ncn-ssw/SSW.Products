@@ -10,6 +10,7 @@ type ActionButton = {
 
 type ActionsProps = {
   actions: ActionButton[];
+  className?: string;
 };
 
 const VARIANT_STYLES: Record<ActionButton["variant"], string> = {
@@ -24,28 +25,29 @@ const SIZE_STYLES: Record<ActionButton["size"], string> = {
   large: "px-6 py-3 text-lg",
 };
 
-const Actions = ({ actions }: ActionsProps) => {
-    return (
-      <div className="grid lg:grid-cols-4">
-        {actions && actions.map((action, index) => (
-          action.url ? (
-            <div key={index}>
-              <Link
-                href={action.url}
-                className={`whitespace-nowrap inline-flex items-center justify-center rounded-lg ${
-                  VARIANT_STYLES[action.variant]
-                } ${
-                  SIZE_STYLES[action.size]
-                } hover:opacity-80 transition-opacity duration-200 font-helvetica font-semibold`}
-              >
-                {action.label}
-              </Link>
-            </div>
-          ) : null // Do not render if `url` is null or undefined
-        ))}
-      </div>
-    );
-  };
-  
+const Actions = ({ actions, className }: ActionsProps) => {
+  return (
+    <div className="grid">
+      {actions &&
+        actions.map(
+          (action, index) =>
+            action.url ? (
+              <div key={index}>
+                <Link
+                  href={action.url}
+                  className={`whitespace-nowrap inline-flex items-center justify-center rounded-lg ${className} ${
+                    VARIANT_STYLES[action.variant]
+                  } ${
+                    SIZE_STYLES[action.size]
+                  } hover:opacity-80 transition-opacity duration-200 font-helvetica font-semibold`}
+                >
+                  {action.label}
+                </Link>
+              </div>
+            ) : null // Do not render if `url` is null or undefined
+        )}
+    </div>
+  );
+};
 
 export default Actions;

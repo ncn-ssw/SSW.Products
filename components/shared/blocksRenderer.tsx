@@ -1,11 +1,25 @@
-import FeatureBlocks, { FeatureItem } from "./Blocks/Features";
-import FAQ from "./Blocks/FAQ";
-import FeatureHorizontalCarousel from "./Blocks/FeatureCarousel";
-
+import FeatureBlocks, { FeatureItem } from './Blocks/Features';
+import FAQ from './Blocks/FAQ';
+import FeatureHorizontalCarousel from './Blocks/FeatureCarousel';
+import Pricing from './Blocks/Pricing';
 
 interface Block {
   __typename: string;
   title?: string | null;
+  description?: any | null;
+  allPlans?: { title: string | null }[] | null;
+  plans?: {
+    planTier: string | null;
+    planDescription: string | null;
+    price: string | null;
+    subPriceText: string | null;
+    actions: {
+      label: string | null;
+      url: string | null;
+      variant?: string | null;
+      size?: string | null;
+    } | null;
+  }[] | null;
   featureItem?: FeatureItem[];
   removeBottomPadding?: boolean;
 }
@@ -40,12 +54,14 @@ const Blocks = ({ blocks }: BlocksProps) => {
       case 'PagesPageBlocksFeatureCarousel':
         // @ts-expect-error investigate after
         return <FeatureHorizontalCarousel key={index} data={block} index={index} />;
+      case 'PagesPageBlocksPricing':
+        // @ts-expect-error investigate after
+        return <Pricing key={index} data={block} />;
       default:
         return null;
     }
   });
 };
-
 
 interface BlocksRendererProps {
   data: {

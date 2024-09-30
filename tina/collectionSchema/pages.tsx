@@ -2,6 +2,7 @@ import { Collection } from "tinacms";
 import { FeaturesTemplate } from "../../components/shared/Blocks/Features.template";
 import { FAQTemplate } from "../../components/shared/Blocks/FAQ.template";
 import { CarouselFeatureTemplate } from "../../components/shared/Blocks/FeatureCarousel.template";
+import { pricingTemplate } from "../../components/shared/Blocks/Pricing.template";
 
 export const PagesSchema: Collection = {
   label: "Product Pages",
@@ -28,7 +29,7 @@ export const PagesSchema: Collection = {
       ui: {
         visualSelector: true,
       },
-      templates: [FeaturesTemplate, FAQTemplate, CarouselFeatureTemplate],
+      templates: [FeaturesTemplate, FAQTemplate, CarouselFeatureTemplate, pricingTemplate],
     },
     // Add more fields here as needed
   ],

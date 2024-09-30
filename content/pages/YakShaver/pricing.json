@@ -1,3 +1,107 @@
 {
-  "title": "pricing"
+  "title": "pricing",
+  "pageBlocks": [
+    {
+      "title": "Pricing",
+      "description": "Pick the right plan for you and get **14 days free** shaving!\n",
+      "allPlans": [
+        {
+          "title": "14 Days Free Trial"
+        },
+        {
+          "title": "Microsoft Teams Integration"
+        },
+        {
+          "title": "AI-Powered Task Routing"
+        },
+        {
+          "title": "Automated Work Item Generation"
+        },
+        {
+          "title": "Team Support"
+        }
+      ],
+      "plans": [
+        {
+          "planTier": "Basic",
+          "planDescription": "Up to 20 users",
+          "price": "$3.50",
+          "subPriceText": "/user per month",
+          "actions": {
+            "label": "GET BASIC",
+            "variant": "outlinedWhite",
+            "size": "medium",
+            "url": "/",
+            "Title": "/"
+          }
+        },
+        {
+          "planTier": "Pro",
+          "planDescription": "Up to 100 users",
+          "price": "$3.00",
+          "subPriceText": "/user per month",
+          "isReccomended": true,
+          "actions": {
+            "label": "GET PRO",
+            "variant": "solidRed",
+            "size": "medium",
+            "url": "/",
+            "Title": "/"
+          }
+        },
+        {
+          "planTier": "Business",
+          "planDescription": "Up to 150 users",
+          "price": "$2.50",
+          "subPriceText": "/user per month",
+          "actions": {
+            "label": "GET BUSINESS",
+            "variant": "outlinedWhite",
+            "size": "medium",
+            "url": "/",
+            "Title": "/"
+          }
+        },
+        {
+          "planTier": "Enterprise",
+          "planDescription": "150+ Users",
+          "price": "Custom",
+          "subPriceText": "/user per month",
+          "actions": {
+            "label": "BOOK A DEMO",
+            "variant": "outlinedWhite",
+            "size": "medium",
+            "url": "/",
+            "Title": "/"
+          }
+        }
+      ],
+      "_template": "pricing"
+    },
+    {
+      "featureItem": [
+        {
+          "headline": "Talk to a YakShaver Expert",
+          "text": "Evaluating YakShaver for your project? Book a 30-minute call with a YakShaver architect!",
+          "buttons": [
+            {
+              "label": "SCHEDULE CALL",
+              "variant": "solidRed",
+              "size": "large",
+              "url": "/",
+              "_template": "actions"
+            }
+          ],
+          "media": [
+            {
+              "image": "/YakShaver/UlyPoint.png",
+              "_template": "image"
+            }
+          ],
+          "removeBottomPadding": true
+        }
+      ],
+      "_template": "features"
+    }
+  ]
 }
