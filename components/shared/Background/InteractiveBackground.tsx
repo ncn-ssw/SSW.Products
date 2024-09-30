@@ -16,8 +16,8 @@ const InteractiveBackground = () => {
 
     function move() {
       
-      const offsetX = interBubble.offsetWidth / 2 - 10; 
-      const offsetY = interBubble.offsetHeight / 2 - 10;
+      const offsetX = interBubble.offsetWidth + 30; 
+      const offsetY = interBubble.offsetHeight;
 
       curX += (tgX - curX) / 20;
       curY += (tgY - curY) / 20;
