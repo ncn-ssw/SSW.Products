@@ -33,16 +33,16 @@ export const FeaturesTemplate: Template = {
           type: "object",
           templates: [
             actionsButtonTemplate,
-            // modalButtonTemplate,
+            modalButtonTemplate,
           ],
         },
         {
           name: "media",
           label: "Media",
-          type: "object", // Make sure this is 'object'
-          list: true, // Ensure `list: true` is present if multiple items are expected
+          type: "object",
+          list: true, 
           ui: {
-            min: 0, // Set your minimum and maximum constraints
+            min: 0, 
             max: 1,
           },
           templates: [
