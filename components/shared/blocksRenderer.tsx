@@ -6,6 +6,7 @@ import Pricing from './Blocks/Pricing';
 interface Block {
   __typename: string;
   title?: string | null;
+  //@ts-ignore need to investigate after
   description?: any | null;
   allPlans?: { title: string | null }[] | null;
   plans?: {

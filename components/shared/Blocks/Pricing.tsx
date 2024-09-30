@@ -25,6 +25,7 @@ interface AllPlan {
 
 interface PricingData {
   title?: string;
+ // @ts-ignore need to investigate aft
   description?: any;
   allPlans?: AllPlan[];
   plans?: Plan[];
