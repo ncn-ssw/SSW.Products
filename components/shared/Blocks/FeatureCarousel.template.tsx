@@ -1,4 +1,4 @@
-import { Template } from "tinacms";
+import { Template } from 'tinacms';
 
 export const CarouselFeatureTemplate: Template = {
   label: 'Feature Horizontal Carousel',
@@ -11,18 +11,17 @@ export const CarouselFeatureTemplate: Template = {
       type: 'object',
       list: true,
       ui: {
-        itemProps: (item: { tabTitle: any }) => {
+        itemProps: (item: { tabTitle?: string }) => {
           return {
             label: item?.tabTitle || 'Feature Carousel Item',
           };
         },
       },
-      fields: 
-      [
-        {name: 'tabTitle', label: 'Tab Title', type: 'string'},
-        {name: 'title', label: 'Title', type: 'string'},
-        {name: 'description', label: 'Description', type: 'string', ui: { component: 'textarea' }},
-        {name: 'image', label: 'Image', type: 'image'},
+      fields: [
+        { name: 'tabTitle', label: 'Tab Title', type: 'string' },
+        { name: 'title', label: 'Title', type: 'string' },
+        { name: 'description', label: 'Description', type: 'string', ui: { component: 'textarea' } },
+        { name: 'image', label: 'Image', type: 'image' },
       ],
     },
   ],

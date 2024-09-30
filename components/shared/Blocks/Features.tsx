@@ -9,7 +9,7 @@ type ActionButton = {
   size: 'small' | 'medium' | 'large';
 };
 
-type FeatureItem = {
+export type FeatureItem = {
   headline: string;
   text: string;
   buttons: ActionButton[];
@@ -105,7 +105,10 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
 };
 
 type FeatureBlocksProps = {
-  data: any;
+  data: {
+    featureItem: FeatureItem[];
+    removeBottomPadding?: boolean;
+  };
   index: number;
 };
 
@@ -115,7 +118,9 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
   return (
     <section
       key={'features-' + index}
-      className={`flex flex-col items-center lg:space-y-12 ${data.removeBottomPadding ? '' : ''} px-4 xl:px-20`}
+      className={`flex flex-col items-center lg:space-y-12 ${
+        data.removeBottomPadding ? '' : ''
+      } px-4 xl:px-20`}
     >
       {features.length > 0 &&
         features.map((feature: FeatureItem, featureIndex: number) => (
@@ -124,5 +129,6 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
     </section>
   );
 };
+
 
 export default FeatureBlocks;

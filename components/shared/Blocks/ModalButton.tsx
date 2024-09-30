@@ -14,7 +14,6 @@ const modals: Record<ModalKey, React.ReactNode> = {
 
 // Define types for the items
 type ModalItem = {
-  color: string;
   label: string;
   icon?: boolean;
   modal: ModalKey;
@@ -55,7 +54,7 @@ export const ModalB = ({ items, align = 'left' }: ModalBProps) => {
       >
         {items &&
           items.map((item: ModalItem) => {
-            const { color, label, icon, modal, variant, size } = item;
+            const { label, icon, modal, variant, size } = item;
 
             return (
               <button

@@ -17,18 +17,3 @@ export default function FilePage() {
     </div>
   );
 }
-
-async function getPage(product: string) {
-  try {
-    const res = await client.queries.pages({
-      relativePath: `${product}/home.json`,
-    });
-    return {
-      query: res.query,
-      data: res.data,
-    };
-  } catch (error) {
-    console.error("Error fetching TinaCMS data:", error);
-    throw new Error(`Could not fetch data for ${product}/home.json`);
-  }
-}

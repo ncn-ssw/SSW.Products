@@ -19,7 +19,6 @@ interface FeatureCarouselProps {
 const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
-
   if (!data || !data.carouselItems || data.carouselItems.length === 0) {
     return <div>No data available</div>;
   }
