@@ -13,6 +13,7 @@ type ActionButton = {
 export type FeatureItem = {
   headline: string;
   text: string;
+  paragraph2?: string;
   buttons: ActionButton[];
   media: Array<{
     __typename: string;
@@ -87,10 +88,16 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
         >
           {feature.text}
         </p>
+        <p
+          className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
+          data-tina-field={tinaField(feature, 'text')}
+        >
+          {feature?.paragraph2}
+        </p>
         
         {/* Buttons */}
         <div className="flex flex-col lg:flex-row lg:justify-start lg:items-center gap-4 xl:gap-0">
-          {feature.buttons.map((button, index) => (
+          {feature.buttons?.map((button, index) => (
             <Actions key={index} actions={[button]} />
           ))}
         </div>

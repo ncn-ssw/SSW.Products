@@ -36,6 +36,12 @@ export const FeaturesTemplate: Template = {
           ui: { component: 'textarea' },
         },
         {
+          name: 'paragraph2',
+          label: 'Paragraph 2',
+          type: 'string' as const,
+          ui: { component: 'textarea' },
+        },
+        {
           name: 'buttons',
           label: 'Buttons',
           list: true,

@@ -1,30 +1,50 @@
-"use client"; 
+import { notFound } from "next/navigation";
+import client from "../../../tina/__generated__/client";
+import InteractiveBackground from "../../../components/shared/Background/InteractiveBackground";
+import NavBarServer from "../../../components/shared/NavBarServer";
+import FooterServer from "../../../components/shared/FooterServer";
+import HomePageClient from "../../../components/shared/HomePageClient";
 
-import { usePathname } from 'next/navigation';
+interface FilePageProps {
+  params: { product: string; filename: string };
+}
 
-export default function FilePage() {
-  const pathname = usePathname(); 
+export default async function FilePage({ params }: FilePageProps) {
+  const { product, filename } = params;
 
-  let filename;
+  console.log("Found product:", product);
+  console.log("Found filename:", filename);
+  console.log(`Querying TinaCMS for ${product}/${filename}.json`);
 
-  if(process.env.NODE_ENV === 'development')
-  {
-    filename = pathname ? pathname.split('/')[1] : 'Unknown File';
-    console.log('dev')
-  }else
-  {
-    filename = pathname ? pathname.split('/')[2] : 'Unknown File';
-    console.log('prod')
-  }
+  const fileData = await getPage(product, filename);
 
-  console.log('filename i found was')
-
+  console.log("File data:", fileData);
 
   return (
     <div>
-      <h1>Content for {filename}</h1>
-  
-      <p>This is the content of the file: {filename}</p>
+      <InteractiveBackground />
+      <NavBarServer product={product} />
+      <HomePageClient
+        query={fileData.query}
+        data={fileData.data}
+        variables={{ relativePath: `${product}/${filename}.json` }}
+      />
+      <FooterServer product={product} />
     </div>
   );
+}
+
+async function getPage(product: string, filename: string) {
+  try {
+    const res = await client.queries.pages({
+      relativePath: `${product}/${filename}.json`,
+    });
+    return {
+      query: res.query,
+      data: res.data,
+    };
+  } catch (error) {
+    console.error("Error fetching TinaCMS data:", error);
+    notFound();
+  }
 }
