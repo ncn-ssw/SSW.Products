@@ -23,9 +23,11 @@ const Blocks = ({ blocks }: BlocksProps) => {
       case "PagesPageBlocksFeatures":
         return <FeatureBlocks key={index} data={block} index={index} />;
       case "PagesPageBlocksFaq":
+        // @ts-ignore
         return <FAQ key={index} data={block} index={index} />;
       case "PagesPageBlocksFeatureCarousel":
         return (
+          // @ts-ignore
           <FeatureHorizontalCarousel key={index} data={block} index={index} />
         );
       default:

@@ -4,18 +4,34 @@ import 'react-responsive-modal/styles.css';
 import { BiArrowBack } from 'react-icons/bi';
 import { tinaField } from 'tinacms/dist/react';
 
+type ModalKey = 'mockModal1' | 'mockModal2' | 'mockModal3';
 
-const modals = {
-  'mockModal1': <div>Mock Modal 1 Content</div>,
-  'mockModal2': <div>Mock Modal 2 Content</div>,
-  'mockModal3': <div>Mock Modal 3 Content</div>,
+const modals: Record<ModalKey, React.ReactNode> = {
+  mockModal1: <div>Mock Modal 1 Content</div>,
+  mockModal2: <div>Mock Modal 2 Content</div>,
+  mockModal3: <div>Mock Modal 3 Content</div>,
 };
 
-export const ModalB = ({ items, align = 'left' }) => {
+// Define types for the items
+type ModalItem = {
+  color: string;
+  label: string;
+  icon?: boolean;
+  modal: ModalKey;
+  variant: 'solidRed' | 'solidWhite' | 'outlinedWhite';
+  size: 'small' | 'medium' | 'large';
+};
+
+type ModalBProps = {
+  items: ModalItem[];
+  align?: 'left' | 'center';
+};
+
+export const ModalB = ({ items, align = 'left' }: ModalBProps) => {
   const [open, setOpen] = useState(false);
   const [ModalContent, setModalContent] = useState<React.ReactNode>(null);
 
-  const openModal = (modal) => {
+  const openModal = (modal: ModalKey) => {
     setModalContent(modals[modal]);
     setOpen(true);
   };
@@ -38,13 +54,12 @@ export const ModalB = ({ items, align = 'left' }) => {
           .join(' ')}
       >
         {items &&
-          items.map((item) => {
+          items.map((item: ModalItem) => {
             const { color, label, icon, modal, variant, size } = item;
 
             return (
               <button
                 key={label}
-                
                 onClick={() => openModal(modal)}
                 data-tina-field={tinaField(item, 'label')}
                 className={`
