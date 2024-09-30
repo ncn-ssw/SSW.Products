@@ -79,14 +79,14 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   }, [isUserInteracting, data.carouselItems.length]);
 
   return (
-    <div className="feature-carousel text-center mb-40" data-tina-field={tinaField(data, 'carouselItems')}>
+    <div className="feature-carousel text-center mb-40 px-4 md:px-0" data-tina-field={tinaField(data, 'carouselItems')}>
       <div className="flex justify-center mb-4">
         <div className="tab-titles flex justify-center rounded-lg bg-black max-w-fit">
           {data.carouselItems.map((item, index) => (
             <button
               key={index}
               onClick={() => handleTabClick(index)}
-              className={`px-8 py-3 font-helvetica text-xl rounded-xl ${
+              className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl font-helvetica md:text-lg text-md rounded-xl ${
                 activeIndex === index
                   ? ' text-black bg-white'
                   : ' text-white bg-black hover:bg-zinc-700 '
@@ -100,7 +100,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
       </div>
 
       <div className="text-white tab-content mt-20">
-        <h2 className="text-3xl font-helvetica" data-tina-field={tinaField(activeItem, 'title')}>
+        <h2 className="md:text-xl lg:text-3xl font-helvetica" data-tina-field={tinaField(activeItem, 'title')}>
           {activeItem?.title || 'No title available'}
         </h2>
         <p className="text-base font-helvetica mt-10" data-tina-field={tinaField(activeItem, 'description')}>
