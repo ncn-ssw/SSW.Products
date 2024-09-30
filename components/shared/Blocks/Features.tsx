@@ -86,7 +86,7 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
         </p>
         
         {/* Buttons */}
-        <div className="flex flex-col lg:flex-row lg:justify-start lg:items-center gap-4">
+        <div className="flex flex-col lg:flex-row lg:justify-start lg:items-center gap-4 xl:gap-0">
           {feature.buttons.map((button, index) => (
             <Actions key={index} actions={[button]} />
           ))}
