@@ -12,13 +12,11 @@ interface FilePageProps {
 export default async function FilePage({ params }: FilePageProps) {
   const { product, filename } = params;
 
-  console.log("Found product:", product);
-  console.log("Found filename:", filename);
-  console.log(`Querying TinaCMS for ${product}/${filename}.json`);
+  
 
   const fileData = await getPage(product, filename);
 
-  console.log("File data:", fileData);
+
 
   return (
     <div>

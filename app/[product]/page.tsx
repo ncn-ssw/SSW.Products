@@ -1,4 +1,3 @@
-// app/[product]/page.tsx
 import client from "../../tina/__generated__/client";
 import HomePageClient from "../../components/shared/HomePageClient";
 import NavBarServer from "../../components/shared/NavBarServer";
@@ -12,12 +11,7 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = params.product;
 
-  console.log("Found product:", product);
-  console.log(`Querying TinaCMS for ${product}/home.json`);
-
   const productData = await getPage(product);
-
-  console.log("Product data:", productData);
 
   return (
     <div>

@@ -34,7 +34,7 @@ export default function FooterClient({ results }: FooterClientProps) {
     setIsVisible(true);
   }, []);
 
-console.log('footer found: ', results?.footer)
+
 
   const footerItems = results?.footer?.footer;
   const footerTitle = results?.footer?.footerTitle;

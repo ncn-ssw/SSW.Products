@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { NavigationBarQuery } from "../../tina/__generated__/types";
 import Image from "next/image";
 import { BookingButton } from "./Blocks/BookingButton";
+import Link from "next/link";
 
 interface NavBarClientProps {
   results: NavigationBarQuery | null;
@@ -32,7 +33,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
   const rightNavItems = navigationBar?.rightNavItem;
   const logo = navigationBar?.Logo;
 
-  console.log("nav bar", navigationBar);
+  
 
   const navbarHeight = 120;
 
@@ -113,7 +114,9 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         <ul className="pl-20 flex items-center justify-start h-full space-x-15 xl:space-x-20">
           {logo && (
             <li className="flex items-center">
+              <Link href="/">
               <Image src={logo} alt="Logo" width={200} height={200} />
+              </Link>
             </li>
           )}
           {leftNavItems?.map((item, index) => renderNavItem(item, index))}
