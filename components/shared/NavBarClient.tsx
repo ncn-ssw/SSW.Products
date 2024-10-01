@@ -37,16 +37,15 @@ export default function NavBarClient({ results }: NavBarClientProps) {
 
   const navbarHeight = 120;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderNavItem = (item: any, index: number) => {
     switch (item?.__typename) {
       case "NavigationBarLeftNavItemStringItem":
       case "NavigationBarRightNavItemStringItem":
         return (
-          <li key={index} className="flex items-center">
+          <li key={index} className="flex items-center pt-2 md:pt-0 lg:px-10 xl:px-0 md:px-6 px-4">
             <a
               href={item.href}
-              className="hover:underline text-2xl font-helvetica"
+              className="hover:underline md:text-2xl font-helvetica"
             >
               {item.label}
             </a>
@@ -111,7 +110,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center`}
         style={{ height: `${navbarHeight}px` }}
       >
-        <ul className="pl-20 flex items-center justify-start h-full space-x-15 xl:space-x-20">
+        <ul className="md:pl-20 pl-10 flex items-center justify-start h-full space-x-15 xl:space-x-20">
           {logo && (
             <li className="flex items-center">
               <Link href="/">

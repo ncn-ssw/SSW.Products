@@ -16,7 +16,6 @@ interface FooterClientProps {
   results: FooterQuery | null;
 }
 
-// Mapping the icon names to the actual react-icons
 const iconMap: { [key: string]: JSX.Element } = {
   FaYouTube: <FaYoutube />,
   FaLinkedIn: <FaLinkedin />,
@@ -49,12 +48,12 @@ export default function FooterClient({ results }: FooterClientProps) {
     >
       <div className="container mx-auto flex justify-between items-center">
         
-        <div className="text-left text-sm lg:text-base">
+        <div className="pl-6 md:pl-0text-left md:text-sm  text-xs lg:text-base">
           {footerTitle || 'Default Footer Title'}
         </div>
 
         
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 md:pr-0 pr-6">
           {footerItems?.map((item, index) => {
             if (item) {
               return (
@@ -63,7 +62,7 @@ export default function FooterClient({ results }: FooterClientProps) {
                   href={item.footerItemLink ?? '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-2xl"
+                  className="flex items-center space-x-2 md:text-2xl text-lg"
                 >
                   
                   {item.footerItemIcon && iconMap[item.footerItemIcon]}
