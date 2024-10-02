@@ -2,7 +2,7 @@ import React from "react";
 import Actions from "./ActionsButton";
 import { tinaField } from "tinacms/dist/react";
 import Image from "next/image";
-import { guttersMedium } from "../../../styles/global.styles";
+
 
 type ActionButton = {
   label: string;
