@@ -30,7 +30,7 @@ const FAQ = ({ data }: { data: FAQData }) => {
       </h2>
       <p className="mb-8" data-tina-field={tinaField(data, 'text')}>{data.text}</p>
       <hr className="border-white" />
-      <div className='mb-40' data-tina-field={tinaField(data, 'questions')}>
+      <div className="mb-40" data-tina-field={tinaField(data, 'questions')}>
         {data.questions.map((item: FAQItem, index: number) => (
           <div key={index} data-tina-field={tinaField(item)}>
             <button
@@ -42,11 +42,20 @@ const FAQ = ({ data }: { data: FAQData }) => {
               </h3>
               <FaPlus className="ml-auto" />
             </button>
-            {activeIndex === index && (
+            <div
+              className={`overflow-hidden ${
+                activeIndex === index
+                  ? 'max-h-[500px] opacity-100 transition-all duration-500 ease-in-out'
+                  : 'max-h-0 opacity-0'
+              }`}
+              style={{
+                transition: activeIndex === index ? 'max-height 500ms ease-in-out, opacity 500ms' : 'none',
+              }}
+            >
               <div className="px-4 pb-4">
                 <p data-tina-field={tinaField(item, 'answer')}>{item.answer}</p>
               </div>
-            )}
+            </div>
             <hr className="border-white" />
           </div>
         ))}
