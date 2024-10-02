@@ -79,29 +79,21 @@
       "_template": "pricing"
     },
     {
-      "featureItem": [
+      "backgroundColour": "#000000",
+      "textColour": "#FFFFFF",
+      "headline": "Talk to a YakShaver Expert",
+      "text": "Evaluating YakShaver for your project? Book a 30-minute call with a YakShaver architect!",
+      "buttons": [
         {
-          "headline": "Talk to a YakShaver Expert",
-          "text": "Evaluating YakShaver for your project? Book a 30-minute call with a YakShaver architect!",
-          "buttons": [
-            {
-              "label": "SCHEDULE CALL",
-              "variant": "solidRed",
-              "size": "large",
-              "url": "/",
-              "_template": "actions"
-            }
-          ],
-          "media": [
-            {
-              "image": "/YakShaver/UlyPoint.png",
-              "_template": "image"
-            }
-          ],
-          "removeBottomPadding": true
+          "label": "SCHEDULE CALL",
+          "variant": "outlinedWhite",
+          "size": "medium",
+          "url": "/",
+          "_template": "actions"
         }
       ],
-      "_template": "features"
+      "image": "/YakShaver/UlyPoint.png",
+      "_template": "Banner"
     }
   ]
 }

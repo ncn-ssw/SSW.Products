@@ -42,10 +42,10 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       case "NavigationBarLeftNavItemStringItem":
       case "NavigationBarRightNavItemStringItem":
         return (
-          <li key={index} className="flex items-center pt-2 md:pt-0 lg:px-10 xl:px-0 md:px-6 px-4">
+          <li key={index} className="flex items-center pt-2 lg:px-10 xl:px-0 md:px-6 px-4">
             <a
               href={item.href}
-              className="hover:underline md:text-2xl font-helvetica"
+              className="hover:underline md:text-xl font-helvetica"
             >
               {item.label}
             </a>
