@@ -31,11 +31,11 @@ const Banner = ({ data }: { data: BannerProps['data'] }) => {
       }}
     >
       <div
-        className='container mx-auto px-4 flex flex-row items-center gap-12 text-left'
+        className='container mx-auto px-4 flex flex-row items-center text-left'
         style={{ color: data.textColour }}
       >
         {/* Left Column: Text and Buttons */}
-        <div className='w-1/3 flex font-helvetica flex-col gap-4 pl-20'>
+        <div className='w-2/5 flex font-helvetica flex-col gap-2 pl-20'>
           <h1
             className='text-3xl  mb-4'
             data-tina-field={tinaField(data, 'headline')}
@@ -60,7 +60,7 @@ const Banner = ({ data }: { data: BannerProps['data'] }) => {
         {/* Right Column: Image */}
         {data.image && (
           <div
-            className='w-2/3 flex items-center justify-center h-full'
+            className='w-3/5 flex items-center justify-center h-full'
             data-tina-field={tinaField(data, 'image')}
           >
             <Image
