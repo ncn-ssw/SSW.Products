@@ -32,14 +32,8 @@ export const FeaturesTemplate: Template = {
         {
           name: 'text',
           label: 'Text',
-          type: 'string' as const,
-          ui: { component: 'textarea' },
-        },
-        {
-          name: 'paragraph2',
-          label: 'Paragraph 2',
-          type: 'string' as const,
-          ui: { component: 'textarea' },
+          type: 'rich-text' as const,
+         
         },
         {
           name: 'buttons',

@@ -2,6 +2,7 @@ import React from "react";
 import Actions from "./ActionsButton";
 import { tinaField } from "tinacms/dist/react";
 import Image from "next/image";
+import { Components, TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 
 
 type ActionButton = {
@@ -13,7 +14,7 @@ type ActionButton = {
 
 export type FeatureItem = {
   headline: string;
-  text: string;
+  text: TinaMarkdownContent;
   paragraph2?: string;
   buttons: ActionButton[];
   media: Array<{
@@ -25,6 +26,28 @@ export type FeatureItem = {
   hasBackground: boolean;
   removeBottomPadding?: boolean;
 };
+
+
+export const featureComponents: Components<{}> = { 
+  //@ts-expect-error investigate type err
+  p: (props: React.HTMLProps<HTMLParagraphElement>) => (
+    <p
+      className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
+      //@ts-expect-error investigate type err
+      data-tina-field={tinaField(props, 'text')}
+      {...props}
+    />
+  ),
+  span: (props: React.HTMLProps<HTMLSpanElement>) => (
+    <span
+      className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
+      //@ts-expect-error investigate type err
+      data-tina-field={tinaField(props, 'text')}
+      {...props}
+    />
+  ),
+};
+
 
 const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
   const renderMedia = () => {
@@ -84,28 +107,16 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
         >
           {feature.headline}
         </h2>
-        <p
-          className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
-          data-tina-field={tinaField(feature, "text")}
-        >
-          {feature.text}
-        </p>
-        <p
-          className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
-          data-tina-field={tinaField(feature, "text")}
-        >
-          {feature?.paragraph2}
-        </p>
-
-        {/* Buttons */}
+        <div>
+          
+        </div>
+        <TinaMarkdown content={feature.text} components={featureComponents}/>
         <div className="flex flex-col lg:flex-row lg:justify-start lg:items-center gap-4 xl:gap-0">
           {feature.buttons?.map((button, index) => (
             <Actions key={index} actions={[button]} />
           ))}
         </div>
       </div>
-
-      {/* Right Column: Media */}
       <div
         className="lg:w-6/10 xl:w-7/10 w-full flex items-center justify-center h-full"
         data-tina-field={tinaField(feature, "media")}
