@@ -41,7 +41,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
 
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % (data?.carouselItems.length || 1));
-    }, 7000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [isUserInteracting, isSmallOrMediumScreen, data?.carouselItems.length]);
@@ -60,42 +60,46 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   };
 
   const renderMedia = (item: CarouselItem) => {
-    const fileExtension = item.image.split('.').pop()?.toLowerCase();
+  const fileExtension = item.image.split('.').pop()?.toLowerCase();
 
-    if (fileExtension === 'gif' || fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png') {
-      return (
-        <div
-          className={`flex justify-center items-center px-4 md:px-20 lg:px-80 transition-opacity duration-500 ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
-          }`} // Added transition effect
-          data-tina-field={tinaField(item, 'image')}
-        >
-          <Image
-            src={item.image}
-            alt="Media item"
-            className="w-full mt-10 rounded-xl"
-            width={2000}
-            height={2000}
-            onLoad={() => setImageLoaded(true)} // Trigger image loaded state
-          />
-        </div>
-      );
-    } else if (fileExtension === 'mp4' || fileExtension === 'webm') {
-      return (
-        <video
-          autoPlay
-          muted
-          loop
-          className="w-full h-auto mt-6 rounded-xl shadow-lg px-4 md:px-20 lg:px-80"
-          data-tina-field={tinaField(item, 'image')}
-        >
-          <source src={item.image} type={`video/${fileExtension}`} />
-          Your browser does not support the video tag.
-        </video>
-      );
-    }
-    return null;
-  };
+  if (['gif', 'jpg', 'jpeg', 'png'].includes(fileExtension || '')) {
+    return (
+      <div
+        className={`media-container flex justify-center items-center px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        data-tina-field={tinaField(item, 'image')}
+      >
+        <Image
+          src={item.image}
+          alt="Media item"
+          className="w-full mt-10 rounded-xl"
+          width={2000}
+          height={2000}
+          onLoad={() => setImageLoaded(true)}
+        />
+      </div>
+    );
+  } else if (['mp4', 'webm'].includes(fileExtension || '')) {
+    return (
+      <video
+        autoPlay
+        muted
+        loop
+        className={`media-container w-full h-auto mt-6 rounded-xl shadow-lg px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        data-tina-field={tinaField(item, 'image')}
+        onCanPlayThrough={() => setImageLoaded(true)}
+      >
+        <source src={item.image} type={`video/${fileExtension}`} />
+        Your browser does not support the video tag.
+      </video>
+    );
+  }
+  return null;
+};
+
 
   return (
     <div
