@@ -33,10 +33,6 @@ export default function NavBarClient({ results }: NavBarClientProps) {
   const rightNavItems = navigationBar?.rightNavItem;
   const logo = navigationBar?.Logo;
 
-  
-
-  const navbarHeight = 120;
-
   const renderNavItem = (item: any, index: number) => {
     switch (item?.__typename) {
       case "NavigationBarLeftNavItemStringItem":
@@ -107,8 +103,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           scrolled
             ? 'bg-[rgba(51,51,51,0.9)] backdrop-blur-md'
             : 'bg-transparent'
-        } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center`}
-        style={{ height: `${navbarHeight}px` }}
+        } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[120px]`}
       >
         <ul className="md:pl-20 pl-10 flex items-center justify-start h-full space-x-15 xl:space-x-20">
           {logo && (
@@ -126,7 +121,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         </ul>
       </nav>
   
-      <div style={{ marginTop: `${navbarHeight}px` }}></div>
+      <div className="h-[120px]"></div>
     </div>
   );
   
