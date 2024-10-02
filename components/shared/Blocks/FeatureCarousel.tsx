@@ -19,16 +19,31 @@ interface FeatureCarouselProps {
 const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const [isSmallOrMediumScreen, setIsSmallOrMediumScreen] = useState(false);
 
   useEffect(() => {
-    if (isUserInteracting) return;
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    setIsSmallOrMediumScreen(mediaQuery.matches);
+
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsSmallOrMediumScreen(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleMediaChange);
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isUserInteracting || isSmallOrMediumScreen) return;
 
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % (data?.carouselItems.length || 1));
     }, 7000);
 
     return () => clearInterval(interval);
-  }, [isUserInteracting, data?.carouselItems.length]);
+  }, [isUserInteracting, isSmallOrMediumScreen, data?.carouselItems.length]);
 
   if (!data || !data.carouselItems || data.carouselItems.length === 0) {
     return <div>No data available</div>;
@@ -39,10 +54,8 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     setIsUserInteracting(true);
   };
 
-  const activeItem = data.carouselItems[activeIndex];
-
-  const renderMedia = (mediaUrl: string) => {
-    const fileExtension = mediaUrl.split('.').pop()?.toLowerCase();
+  const renderMedia = (item: CarouselItem) => {
+    const fileExtension = item.image.split('.').pop()?.toLowerCase();
 
     if (
       fileExtension === 'gif' ||
@@ -51,9 +64,9 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
       fileExtension === 'png'
     ) {
       return (
-        <div className="flex justify-center items-center px-80" data-tina-field={tinaField(activeItem, 'image')}>
+        <div className="flex justify-center items-center px-80" data-tina-field={tinaField(item, 'image')}>
           <Image
-            src={mediaUrl}
+            src={item.image}
             alt="Media item"
             className="w-full mt-10 rounded-xl shadow-lg"
             width={200}
@@ -68,9 +81,9 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           muted
           loop
           className="w-full h-auto mt-6 rounded-xl shadow-lg px-80"
-          data-tina-field={tinaField(activeItem, 'image')}
+          data-tina-field={tinaField(item, 'image')}
         >
-          <source src={mediaUrl} type={`video/${fileExtension}`} />
+          <source src={item.image} type={`video/${fileExtension}`} />
           Your browser does not support the video tag.
         </video>
       );
@@ -80,33 +93,58 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
 
   return (
     <div className="feature-carousel text-center mb-40 px-4 md:px-0" data-tina-field={tinaField(data, 'carouselItems')}>
-      <div className="flex justify-center mb-4">
-        <div className="tab-titles flex justify-center rounded-lg bg-black max-w-fit">
-          {data.carouselItems.map((item, index) => (
-            <button
-              key={index}
-              onClick={() => handleTabClick(index)}
-              className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl font-helvetica md:text-lg text-md rounded-xl ${
-                activeIndex === index
-                  ? ' text-black bg-white'
-                  : ' text-white bg-black hover:bg-zinc-700 '
-              }`}
-              data-tina-field={tinaField(item, 'tabTitle')}
-            >
-              <span className="px-2">{item?.tabTitle || 'Untitled'}</span>
-            </button>
-          ))}
+      
+      {!isSmallOrMediumScreen ? (
+        <div className="flex justify-center mb-4">
+          <div className="tab-titles flex justify-center rounded-lg bg-black max-w-fit">
+            {data.carouselItems.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => handleTabClick(index)}
+                className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl font-helvetica md:text-lg text-md rounded-xl ${
+                  activeIndex === index
+                    ? ' text-black bg-white'
+                    : ' text-white bg-black hover:bg-zinc-700 '
+                }`}
+                data-tina-field={tinaField(item, 'tabTitle')}
+              >
+                <span className="px-2">{item?.tabTitle || 'Untitled'}</span>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="mb-10">
+          <h2 className="text-2xl text-white">All Features</h2>
+        </div>
+      )}
 
+      
       <div className="text-white tab-content mt-20">
-        <h2 className="md:text-xl lg:text-3xl font-helvetica" data-tina-field={tinaField(activeItem, 'title')}>
-          {activeItem?.title || 'No title available'}
-        </h2>
-        <p className="text-base font-helvetica mt-10" data-tina-field={tinaField(activeItem, 'description')}>
-          {activeItem?.description || 'No description available'}
-        </p>
-        {activeItem.image && renderMedia(activeItem.image)}
+        {!isSmallOrMediumScreen
+          ? (
+            <div>
+              <h2 className="md:text-xl lg:text-3xl font-helvetica" data-tina-field={tinaField(data.carouselItems[activeIndex], 'title')}>
+                {data.carouselItems[activeIndex]?.title || 'No title available'}
+              </h2>
+              <p className="text-base font-helvetica mt-10" data-tina-field={tinaField(data.carouselItems[activeIndex], 'description')}>
+                {data.carouselItems[activeIndex]?.description || 'No description available'}
+              </p>
+              {renderMedia(data.carouselItems[activeIndex])}
+            </div>
+          ) : (
+            data.carouselItems.map((item, index) => (
+              <div key={index} className="mt-10">
+                <h2 className="md:text-xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
+                  {item?.title || 'No title available'}
+                </h2>
+                <p className="text-base font-helvetica mt-4" data-tina-field={tinaField(item, 'description')}>
+                  {item?.description || 'No description available'}
+                </p>
+                {item.image && renderMedia(item)}
+              </div>
+            ))
+          )}
       </div>
     </div>
   );
