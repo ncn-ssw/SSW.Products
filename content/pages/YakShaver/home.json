@@ -32,25 +32,25 @@
           "tabTitle": "Auto Delegation",
           "title": "Auto Delegation",
           "description": "Effortlessly assigns tasks to the correct team member based on their responsibilities or expertise ",
-          "image": "/YakShaver/Features/Auto Delegation 4.png"
+          "image": "/YakShaver/Features/Auto Delegation 5.png"
         },
         {
           "tabTitle": "Seamless Integration",
           "title": "Seamless Integration",
           "description": "Connect with your tools for smooth communicaiton such as Microsoft Teams",
-          "image": "/YakShaver/Features/Time Saving Automation 4.png"
+          "image": "/YakShaver/Features/Seamless Integration 3.png"
         },
         {
           "tabTitle": "Time Saving Automation",
           "title": "Time Saving Automation",
           "description": "Remove bottlenecks and reduce downtime by eliminating the task of figuring out responsiblity",
-          "image": "/YakShaver/Features/Time Saving Automation 2.png"
+          "image": "/YakShaver/Features/Time Saving Automation 5.png"
         },
         {
           "tabTitle": "Real-Time PBIs",
           "title": "Real-Time PBIs",
           "description": "Stay updated instantly with alerts when PBIs have been assigned, completed or require follow-up",
-          "image": "/YakShaver/Features/Detailed Work Items 4.png"
+          "image": "/YakShaver/Features/Detailed Work Items 5.png"
         }
       ],
       "_template": "featureCarousel"
