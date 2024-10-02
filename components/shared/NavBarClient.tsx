@@ -101,12 +101,12 @@ export default function NavBarClient({ results }: NavBarClientProps) {
   };
 
   return (
-    <>
+    <div>
       <nav
         className={`${
           scrolled
-            ? "bg-[rgba(51,51,51,0.9)] backdrop-blur-md"
-            : "bg-transparent"
+            ? 'bg-[rgba(51,51,51,0.9)] backdrop-blur-md'
+            : 'bg-transparent'
         } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center`}
         style={{ height: `${navbarHeight}px` }}
       >
@@ -114,19 +114,20 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           {logo && (
             <li className="flex items-center">
               <Link href="/">
-              <Image src={logo} alt="Logo" width={200} height={200} />
+                <Image src={logo} alt="Logo" width={200} height={200} />
               </Link>
             </li>
           )}
           {leftNavItems?.map((item, index) => renderNavItem(item, index))}
         </ul>
-
+  
         <ul className="pr-20 flex items-center justify-end h-full space-x-15 xl:space-x-20">
           {rightNavItems?.map((item, index) => renderNavItem(item, index))}
         </ul>
       </nav>
-
+  
       <div style={{ marginTop: `${navbarHeight}px` }}></div>
-    </>
+    </div>
   );
+  
 }

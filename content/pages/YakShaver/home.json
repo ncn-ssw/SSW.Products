@@ -86,7 +86,7 @@
       "buttons": [
         {
           "label": "SCHEDULE CALL",
-          "variant": "outlinedWhite",
+          "variant": "solidRed",
           "size": "medium",
           "url": "/",
           "_template": "actions"

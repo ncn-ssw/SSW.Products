@@ -29,5 +29,8 @@
     "tailwindcss": "3.4.13",
     "typescript": "^5"
   },
+  "resolutions": {
+    "@headlessui/react": "2.1.8"
+  },
   "packageManager": "yarn@1.22.5+sha512.e6ecca5f074c73efa6624b57aa47e93584fdb58f158967a0539f0781ba3e297cebcf3844c8fd48a7e053b579682eb5cd70d9711496cb885286692f6f2bdca6e9"
 }
