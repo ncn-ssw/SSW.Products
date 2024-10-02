@@ -98,12 +98,12 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
       className={`flex flex-col-reverse lg:flex-row w-full items-center lg:gap-12 gap-8 ${
         feature.isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
       } ${
-        feature.removeBottomPadding ? "" : "md:mb-60 mb-0"
+        feature.removeBottomPadding ? "" : "mb-0"
       } pb-10 lg:pb-0 px-4 xl:px-20`}
     >
-      <div className="lg:w-2/7 w-full flex flex-col gap-4">
+      <div className="lg:w-2/7 w-full flex flex-col gap-2">
         <h2
-          className="xl:text-5xl lg:text-4xl md:text-4xl text-4xl text-white font-helvetica tracking-wide mb-4"
+          className="xl:text-5xl lg:text-4xl md:text-4xl text-4xl text-white font-helvetica tracking-wide"
           data-tina-field={tinaField(feature, "headline")}
         >
           {feature.headline}
@@ -143,7 +143,7 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
   return (
     <section
       key={"features-" + index}
-      className={`flex flex-col items-center lg:space-y-12 xl:px-60 lg:px-20 md:px-20 px-10 `}
+      className={`flex flex-col items-center lg:space-y-12 xl:px-80 lg:px-10 md:px-10 px-10 `}
     >
       {features.length > 0 &&
         features.map((feature: FeatureItem, featureIndex: number) => (

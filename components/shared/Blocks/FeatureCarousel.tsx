@@ -56,7 +56,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
 
   const renderMedia = (item: CarouselItem) => {
     const fileExtension = item.image.split('.').pop()?.toLowerCase();
-
+  
     if (
       fileExtension === 'gif' ||
       fileExtension === 'jpg' ||
@@ -64,13 +64,13 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
       fileExtension === 'png'
     ) {
       return (
-        <div className="flex justify-center items-center px-80" data-tina-field={tinaField(item, 'image')}>
+        <div className="flex justify-center items-center px-4 md:px-20 lg:px-80" data-tina-field={tinaField(item, 'image')}>
           <Image
             src={item.image}
             alt="Media item"
-            className="w-full mt-10 rounded-xl shadow-lg"
-            width={200}
-            height={200}
+            className="w-full mt-10 rounded-xl"
+            width={2000}
+            height={2000}
           />
         </div>
       );
@@ -80,7 +80,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           autoPlay
           muted
           loop
-          className="w-full h-auto mt-6 rounded-xl shadow-lg px-80"
+          className="w-full h-auto mt-6 rounded-xl shadow-lg px-4 md:px-20 lg:px-80"
           data-tina-field={tinaField(item, 'image')}
         >
           <source src={item.image} type={`video/${fileExtension}`} />
@@ -90,9 +90,10 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     }
     return null;
   };
+  
 
   return (
-    <div className="feature-carousel text-center mb-40 px-4 md:px-0" data-tina-field={tinaField(data, 'carouselItems')}>
+    <div className="feature-carousel text-center mb-40 px-4 md:px-0 xl:mt-40 lg:mt-40 xl:px-40" data-tina-field={tinaField(data, 'carouselItems')}>
       
       {!isSmallOrMediumScreen ? (
         <div className="flex justify-center mb-4">
@@ -108,13 +109,13 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
                 }`}
                 data-tina-field={tinaField(item, 'tabTitle')}
               >
-                <span className="px-2">{item?.tabTitle || 'Untitled'}</span>
+                <span className="px-2 ">{item?.tabTitle || 'Untitled'}</span>
               </button>
             ))}
           </div>
         </div>
       ) : (
-        <div className="mb-10">
+        <div className="mb-10 hidden lg:block">
           <h2 className="text-2xl text-white">All Features</h2>
         </div>
       )}
@@ -135,7 +136,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           ) : (
             data.carouselItems.map((item, index) => (
               <div key={index} className="mt-10">
-                <h2 className="md:text-xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
+                <h2 className="text-2xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
                   {item?.title || 'No title available'}
                 </h2>
                 <p className="text-base font-helvetica mt-4" data-tina-field={tinaField(item, 'description')}>

@@ -5,7 +5,7 @@
       "featureItem": [
         {
           "headline": "Stop Wasting Time - Start Solving Problems",
-          "text": "Don't waste another minute figuring out who can fix the problem. With YakShaver, the right person gets notified instantly, saving you hours of frustration",
+          "text": "Don't waste another minute figuring out who can fix the problem. With YakShaver, the right person gets notified instantly, saving you hours of frustration\n",
           "buttons": [
             {
               "label": "BOOK A DEMO",
@@ -32,25 +32,25 @@
           "tabTitle": "Auto Delegation",
           "title": "Auto Delegation",
           "description": "Effortlessly assigns tasks to the correct team member based on their responsibilities or expertise ",
-          "image": "/YakShaver/SSW YakShaver logo.png"
+          "image": "/YakShaver/Features/Auto Delegation 2.png"
         },
         {
           "tabTitle": "Seamless Integration",
           "title": "Seamless Integration",
           "description": "Connect with your tools for smooth communicaiton such as Microsoft Teams",
-          "image": "/YakShaver/SSW YakShaver logo.png"
+          "image": "/YakShaver/Features/Seamless Integration 1.png"
         },
         {
           "tabTitle": "Time Saving Automation",
           "title": "Time Saving Automation",
           "description": "Remove bottlenecks and reduce downtime by eliminating the task of figuring out responsiblity",
-          "image": "/YakShaver/YakShaver horizontal.png"
+          "image": "/YakShaver/Features/Time Saving Automation 2.png"
         },
         {
           "tabTitle": "Real-Time PBIs",
           "title": "Real-Time PBIs",
           "description": "Stay updated instantly with alerts when PBIs have been assigned, completed or require follow-up",
-          "image": "/YakShaver/YakShaver 2250x1350.png"
+          "image": "/YakShaver/Features/Detailed Work Items 2.png"
         }
       ],
       "_template": "featureCarousel"
