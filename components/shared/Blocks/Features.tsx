@@ -28,7 +28,7 @@ export type FeatureItem = {
 };
 
 
-export const featureComponents: Components<{}> = { 
+export const featureComponents: Components<Record<string, unknown>> = { 
   //@ts-expect-error investigate type err
   p: (props: React.HTMLProps<HTMLParagraphElement>) => (
     <p
@@ -38,6 +38,7 @@ export const featureComponents: Components<{}> = {
       {...props}
     />
   ),
+  //@ts-expect-error investigate type err
   span: (props: React.HTMLProps<HTMLSpanElement>) => (
     <span
       className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
