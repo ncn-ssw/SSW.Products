@@ -20,6 +20,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   const [isSmallOrMediumScreen, setIsSmallOrMediumScreen] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false); // New state for image loading
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
@@ -45,6 +46,10 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     return () => clearInterval(interval);
   }, [isUserInteracting, isSmallOrMediumScreen, data?.carouselItems.length]);
 
+  useEffect(() => {
+    setImageLoaded(false); // Reset imageLoaded when activeIndex changes
+  }, [activeIndex]);
+
   if (!data || !data.carouselItems || data.carouselItems.length === 0) {
     return <div>No data available</div>;
   }
@@ -56,21 +61,22 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
 
   const renderMedia = (item: CarouselItem) => {
     const fileExtension = item.image.split('.').pop()?.toLowerCase();
-  
-    if (
-      fileExtension === 'gif' ||
-      fileExtension === 'jpg' ||
-      fileExtension === 'jpeg' ||
-      fileExtension === 'png'
-    ) {
+
+    if (fileExtension === 'gif' || fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png') {
       return (
-        <div className="flex justify-center items-center px-4 md:px-20 lg:px-80" data-tina-field={tinaField(item, 'image')}>
+        <div
+          className={`flex justify-center items-center px-4 md:px-20 lg:px-80 transition-opacity duration-500 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`} // Added transition effect
+          data-tina-field={tinaField(item, 'image')}
+        >
           <Image
             src={item.image}
             alt="Media item"
             className="w-full mt-10 rounded-xl"
             width={2000}
             height={2000}
+            onLoad={() => setImageLoaded(true)} // Trigger image loaded state
           />
         </div>
       );
@@ -90,11 +96,12 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     }
     return null;
   };
-  
 
   return (
-    <div className="feature-carousel text-center mb-40 px-4 md:px-0 xl:mt-40 lg:mt-40 xl:px-40" data-tina-field={tinaField(data, 'carouselItems')}>
-      
+    <div
+      className="feature-carousel text-center mb-40 px-4 md:px-0 xl:mt-40 lg:mt-40 xl:px-40"
+      data-tina-field={tinaField(data, 'carouselItems')}
+    >
       {!isSmallOrMediumScreen ? (
         <div className="flex justify-center mb-4">
           <div className="tab-titles flex justify-center rounded-lg bg-black max-w-fit">
@@ -104,12 +111,12 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
                 onClick={() => handleTabClick(index)}
                 className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl font-helvetica md:text-lg text-md rounded-xl ${
                   activeIndex === index
-                    ? ' text-black bg-white'
-                    : ' text-white bg-black hover:bg-zinc-700 '
+                    ? 'text-black bg-white'
+                    : 'text-white bg-black hover:bg-zinc-700'
                 }`}
                 data-tina-field={tinaField(item, 'tabTitle')}
               >
-                <span className="px-2 ">{item?.tabTitle || 'Untitled'}</span>
+                <span className="px-2">{item?.tabTitle || 'Untitled'}</span>
               </button>
             ))}
           </div>
@@ -120,32 +127,36 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
         </div>
       )}
 
-      
       <div className="text-white tab-content mt-20">
-        {!isSmallOrMediumScreen
-          ? (
-            <div>
-              <h2 className="md:text-xl lg:text-3xl font-helvetica" data-tina-field={tinaField(data.carouselItems[activeIndex], 'title')}>
-                {data.carouselItems[activeIndex]?.title || 'No title available'}
+        {!isSmallOrMediumScreen ? (
+          <div>
+            <h2
+              className="md:text-xl lg:text-3xl font-helvetica"
+              data-tina-field={tinaField(data.carouselItems[activeIndex], 'title')}
+            >
+              {data.carouselItems[activeIndex]?.title || 'No title available'}
+            </h2>
+            <p
+              className="text-base font-helvetica mt-10"
+              data-tina-field={tinaField(data.carouselItems[activeIndex], 'description')}
+            >
+              {data.carouselItems[activeIndex]?.description || 'No description available'}
+            </p>
+            {renderMedia(data.carouselItems[activeIndex])}
+          </div>
+        ) : (
+          data.carouselItems.map((item, index) => (
+            <div key={index} className="mt-10">
+              <h2 className="text-2xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
+                {item?.title || 'No title available'}
               </h2>
-              <p className="text-base font-helvetica mt-10" data-tina-field={tinaField(data.carouselItems[activeIndex], 'description')}>
-                {data.carouselItems[activeIndex]?.description || 'No description available'}
+              <p className="text-base font-helvetica mt-4" data-tina-field={tinaField(item, 'description')}>
+                {item?.description || 'No description available'}
               </p>
-              {renderMedia(data.carouselItems[activeIndex])}
+              {item.image && renderMedia(item)}
             </div>
-          ) : (
-            data.carouselItems.map((item, index) => (
-              <div key={index} className="mt-10">
-                <h2 className="text-2xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
-                  {item?.title || 'No title available'}
-                </h2>
-                <p className="text-base font-helvetica mt-4" data-tina-field={tinaField(item, 'description')}>
-                  {item?.description || 'No description available'}
-                </p>
-                {item.image && renderMedia(item)}
-              </div>
-            ))
-          )}
+          ))
+        )}
       </div>
     </div>
   );

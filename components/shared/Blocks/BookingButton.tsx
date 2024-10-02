@@ -41,7 +41,7 @@ export const BookingButton = ({ title }: BookingButtonProps) => {
     <div>
       <button
         onClick={openModal}
-        className="px-5 py-4 bg-[#CC4141] font-semibold text-center items-center text-white rounded-lg hover:opacity-80"
+        className="md:px-5 md:py-4 px-2 py-1 bg-[#CC4141] md:font-semibold text-center items-center text-white rounded-lg hover:opacity-80 whitespace-nowrap"
       >
         {title}
       </button>

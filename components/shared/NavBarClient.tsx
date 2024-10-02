@@ -121,7 +121,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           {leftNavItems?.map((item, index) => renderNavItem(item, index))}
         </ul>
   
-        <ul className="pr-20 flex items-center justify-end h-full space-x-15 xl:space-x-20">
+        <ul className="md:pr-20 pr-5 flex items-center justify-end h-full space-x-15 xl:space-x-20">
           {rightNavItems?.map((item, index) => renderNavItem(item, index))}
         </ul>
       </nav>
