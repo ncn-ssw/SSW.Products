@@ -8,7 +8,6 @@ interface FeatureItem {
   buttons?: Array<{ label: string; url: string }>;
   media?: Array<{ image?: string; src?: string }>;
   isReversed?: boolean;
-  removeBottomPadding?: boolean;
 }
 
 export const FeaturesTemplate: Template = {
@@ -74,16 +73,6 @@ export const FeaturesTemplate: Template = {
             format: (value: unknown) => !!value,
           },
           description: 'When toggled, the media and text content will be reversed.',
-        },
-        {
-          name: 'removeBottomPadding',
-          label: 'Do we want to remove the bottom padding?',
-          type: 'boolean',
-          ui: {
-            component: 'toggle',
-            parse: (value: unknown) => !!value,
-            format: (value: unknown) => !!value,
-          },
         },
       ],
     },

@@ -24,7 +24,6 @@ interface Block {
       }[]
     | null;
   featureItem?: FeatureItem[];
-  removeBottomPadding?: boolean;
 }
 
 interface BlocksProps {
@@ -43,7 +42,6 @@ const Blocks = ({ blocks }: BlocksProps) => {
               key={index}
               data={{
                 featureItem: block.featureItem,
-                removeBottomPadding: block.removeBottomPadding,
               }}
               index={index}
             />

@@ -24,7 +24,6 @@ export type FeatureItem = {
   }>;
   isReversed: boolean;
   hasBackground: boolean;
-  removeBottomPadding?: boolean;
 };
 
 
@@ -97,9 +96,7 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
     <div
       className={`flex flex-col-reverse lg:flex-row w-full items-center lg:gap-12 gap-8 ${
         feature.isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
-      } ${
-        feature.removeBottomPadding ? "" : "mb-0"
-      } pb-10 lg:pb-0 px-4 xl:px-20`}
+      }  pb-10 lg:pb-0 px-4 xl:px-20`}
     >
       <div className="lg:w-2/7 w-full flex flex-col gap-2">
         <h2
@@ -131,7 +128,6 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
 type FeatureBlocksProps = {
   data: {
     featureItem: FeatureItem[];
-    removeBottomPadding?: boolean;
   };
   index: number;
 };
