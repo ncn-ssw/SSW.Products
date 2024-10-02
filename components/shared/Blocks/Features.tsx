@@ -139,7 +139,7 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
   return (
     <section
       key={"features-" + index}
-      className={`flex flex-col items-center lg:space-y-12 xl:px-80 lg:px-10 md:px-10 pt-32 pb-20`}
+      className={`flex flex-col items-center lg:space-y-12 lg:px-10 xl:px-60 md:px-10 pt-32 pb-20`}
     >
       {features.length > 0 &&
         features.map((feature: FeatureItem, featureIndex: number) => (
