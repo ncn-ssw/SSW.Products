@@ -2,6 +2,7 @@ import React from "react";
 import Actions from "./ActionsButton";
 import { tinaField } from "tinacms/dist/react";
 import Image from "next/image";
+import { guttersMedium } from "../../../styles/global.styles";
 
 type ActionButton = {
   label: string;
@@ -130,9 +131,7 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
   return (
     <section
       key={"features-" + index}
-      className={`flex flex-col items-center lg:space-y-12 ${
-        data.removeBottomPadding ? "" : ""
-      } px-4 xl:px-20`}
+      className={`flex flex-col items-center lg:space-y-12 xl:px-60 lg:px-20 md:px-20 px-10 `}
     >
       {features.length > 0 &&
         features.map((feature: FeatureItem, featureIndex: number) => (
