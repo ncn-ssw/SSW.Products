@@ -31,11 +31,11 @@ const Banner = ({ data }: { data: BannerProps['data'] }) => {
       }}
     >
       <div
-        className='container mx-auto px-4 flex flex-col lg:flex-row items-center lg:gap-12 gap-8 text-left'
+        className='container mx-auto px-4 flex flex-row items-center gap-12 text-left'
         style={{ color: data.textColour }}
       >
-        
-        <div className='lg:w-1/3 w-full flex font-helvetica flex-col gap-4 lg:pl-20'>
+        {/* Left Column: Text and Buttons */}
+        <div className='w-1/3 flex font-helvetica flex-col gap-4 pl-20'>
           <h1
             className='text-3xl  mb-4'
             data-tina-field={tinaField(data, 'headline')}
@@ -49,18 +49,18 @@ const Banner = ({ data }: { data: BannerProps['data'] }) => {
             {data.text}
           </p>
 
-        
-          <div className='flex flex-col lg:flex-row lg:justify-start lg:items-center gap-4 xl:gap-0 mb-8'>
+          {/* Buttons */}
+          <div className='flex flex-col justify-start gap-4 mb-8'>
             {data.buttons?.map((button, index) => (
               <Actions key={index} actions={[button]} />
             ))}
           </div>
         </div>
 
-        
+        {/* Right Column: Image */}
         {data.image && (
           <div
-            className='lg:w-1/2 w-full flex items-center justify-center h-full'
+            className='w-2/3 flex items-center justify-center h-full'
             data-tina-field={tinaField(data, 'image')}
           >
             <Image
