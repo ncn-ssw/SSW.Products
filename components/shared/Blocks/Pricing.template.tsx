@@ -63,27 +63,27 @@ export const pricingTemplate: Template = {
         {
           name: 'planTier',
           label: 'Plan Tier',
-          type: 'string' as const,
+          type: 'string',
         },
         {
           name: 'planDescription',
           label: 'priceDescription',
-          type: 'string' as const,
+          type: 'string',
         },
         {
           name: 'price',
           label: 'price',
-          type: 'string' as const,
+          type: 'string',
         },
         {
           name: 'subPriceText',
           label: 'Price under Text',
-          type: 'string' as const,
+          type: 'string',
         },
         {
           name: 'isReccomended',
           label: 'Is this tier reccomended?',
-          type: 'boolean' as const,
+          type: 'boolean',
         },
         {
           name: 'actions',

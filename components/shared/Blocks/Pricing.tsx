@@ -2,6 +2,7 @@ import React from 'react';
 import { TinaMarkdown, TinaMarkdownContent } from 'tinacms/dist/rich-text';
 import { TiTick } from 'react-icons/ti';
 import Actions from './ActionsButton';
+import { tinaField } from 'tinacms/dist/react'; 
 
 interface PlanAction {
   label: string;
@@ -40,22 +41,29 @@ const Pricing = ({ data }: PricingProps) => {
   return (
     <div className='pricing-component container mx-auto p-4 lg:pb-40'>
       {title && (
-        <h1 className='text-5xl text-center font-helvetica text-white mb-4'>
+        <h1
+          className='text-5xl text-center font-helvetica text-white mb-4'
+          data-tina-field={tinaField(data, 'title')}
+        >
           {title}
         </h1>
       )}
 
       {description && (
-        <div className='text-lg text-white text-center mb-8'>
+        <div
+          className='text-lg text-white text-center mb-8'
+          data-tina-field={tinaField(data, 'description')}
+        >
           <TinaMarkdown content={description} />
         </div>
       )}
 
-      {/* Updated grid to handle different screen sizes */}
       <div className='grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5 px-28'>
-        {/* All Plans Include row in lg, centered, and in the same row as others in xl */}
         {allPlans && allPlans.length > 0 && (
-          <div className='all-plans p-4 rounded-lg text-white col-span-1 lg:col-span-2 lg:mx-auto xl:col-span-1'>
+          <div
+            className='all-plans p-4 rounded-lg text-white col-span-1 lg:col-span-2 lg:mx-auto xl:col-span-1'
+            data-tina-field={tinaField(data, 'allPlans')}
+          >
             <h3 className='text-xl font-semibold mb-4'>All Plans Include:</h3>
             <ul>
               {allPlans.map(
@@ -71,7 +79,6 @@ const Pricing = ({ data }: PricingProps) => {
           </div>
         )}
 
-        {/* Plans rendered in columns according to screen size */}
         {plans &&
           plans.length > 0 &&
           plans.map((plan, index) => (
@@ -82,6 +89,7 @@ const Pricing = ({ data }: PricingProps) => {
                   ? 'border-3 border-white border-opacity-100'
                   : ''
               }`}
+              data-tina-field={tinaField(data, 'plans', index)}
             >
               {plan.planTier && (
                 <div className='mb-2 flex items-center justify-between'>
