@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import './InteractiveBackground.scss'; 
 
 const InteractiveBackground = () => {
-  const interBubbleRef = useRef<HTMLDivElement>(null);
+  const interactiveBubbleRef = useRef<HTMLDivElement>(null);
   const backgroundBubblesRef = useRef<HTMLDivElement[]>([]);
 
   // This component creates an interactive background where:
@@ -13,7 +13,7 @@ const InteractiveBackground = () => {
 
 
   useEffect(() => {
-    const interBubble = interBubbleRef.current!;
+    const interactiveBubble = interactiveBubbleRef.current!;
     let curX = window.innerWidth / 2;
     let curY = window.innerHeight / 2;
     let tgX = curX;
@@ -21,32 +21,32 @@ const InteractiveBackground = () => {
 
     function move() {
       
-      const offsetX = interBubble.offsetWidth + 30;  //Offset to center the movement bubble
-      const offsetY = interBubble.offsetHeight;
+      const offsetX = interactiveBubble.offsetWidth + 30;  //Offset to center the movement bubble
+      const offsetY = interactiveBubble.offsetHeight;
 
       //ease movement from current to target pos 
       curX += (tgX - curX) / 20;
       curY += (tgY - curY) / 20;
       //moves bubble to new pos 
-      interBubble.style.transform = `translate(${Math.round(curX - offsetX)}px, ${Math.round(curY - offsetY)}px)`;
+      interactiveBubble.style.transform = `translate(${Math.round(curX - offsetX)}px, ${Math.round(curY - offsetY)}px)`;
 
       
       //Loop through each background bubble and check if it's close to the interactive bubble
       backgroundBubblesRef.current.forEach((bubble) => {
         const bubbleRect = bubble.getBoundingClientRect();
-        const interBubbleRect = interBubble.getBoundingClientRect();
+        const interactiveBubbleRect = interactiveBubble.getBoundingClientRect();
 
         // Calculate the distance between the center of the interactive bubble and the background bubble
         const dx =
-          (interBubbleRect.left + interBubbleRect.width / 2) -
+          (interactiveBubbleRect.left + interactiveBubbleRect.width / 2) -
           (bubbleRect.left + bubbleRect.width / 2);
         const dy =
-          (interBubbleRect.top + interBubbleRect.height / 2) -
+          (interactiveBubbleRect.top + interactiveBubbleRect.height / 2) -
           (bubbleRect.top + bubbleRect.height / 2);
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         //Calculate radius of bubbles and minimum distance allowed b/w the two of them 
-        const interBubbleRadius = interBubbleRect.width / 2;
+        const interBubbleRadius = interactiveBubbleRect.width / 2;
         const bubbleRadius = bubbleRect.width / 2;
         const minDistance = interBubbleRadius + bubbleRadius;
 
@@ -91,7 +91,7 @@ const InteractiveBackground = () => {
         <div className="g4" ref={(el) => { if (el) backgroundBubblesRef.current.push(el) }}></div>
         <div className="g5" ref={(el) => { if (el) backgroundBubblesRef.current.push(el) }}></div>
       </div>
-      <div className="interactive" ref={interBubbleRef}></div>
+      <div className="interactive" ref={interactiveBubbleRef}></div>
     </div>
   );
 };
