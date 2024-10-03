@@ -52,7 +52,7 @@ const Pricing = ({ data }: PricingProps) => {
       )}
 
       {/* Updated grid to handle different screen sizes */}
-      <div className='grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5'>
+      <div className='grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5 px-28'>
         {/* All Plans Include row in lg, centered, and in the same row as others in xl */}
         {allPlans && allPlans.length > 0 && (
           <div className='all-plans p-4 rounded-lg text-white col-span-1 lg:col-span-2 lg:mx-auto xl:col-span-1'>

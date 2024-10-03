@@ -103,7 +103,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
 
   return (
     <div
-      className="feature-carousel text-center mb-40 px-4 md:px-0 xl:mt-40 lg:mt-40 xl:px-40"
+      className="feature-carousel text-center mb-20 px-4 md:px-0 xl:mt-40 lg:mt-40 xl:px-40"
       data-tina-field={tinaField(data, 'carouselItems')}
     >
       {!isSmallOrMediumScreen ? (
@@ -131,7 +131,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
         </div>
       )}
 
-      <div className="text-white tab-content mt-20">
+      <div className="text-white tab-content mt-10">
         {!isSmallOrMediumScreen ? (
           <div>
             <h2
@@ -141,7 +141,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
               {data.carouselItems[activeIndex]?.title || 'No title available'}
             </h2>
             <p
-              className="text-base font-helvetica mt-10"
+              className="text-base font-helvetica mt-5"
               data-tina-field={tinaField(data.carouselItems[activeIndex], 'description')}
             >
               {data.carouselItems[activeIndex]?.description || 'No description available'}
@@ -150,7 +150,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           </div>
         ) : (
           data.carouselItems.map((item, index) => (
-            <div key={index} className="mt-10">
+            <div key={index} className="mt-5">
               <h2 className="text-2xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
                 {item?.title || 'No title available'}
               </h2>
