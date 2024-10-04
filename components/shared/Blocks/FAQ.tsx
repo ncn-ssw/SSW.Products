@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaMinus } from 'react-icons/fa'; 
 import { tinaField } from 'tinacms/dist/react';
 
 type FAQItem = {
@@ -40,16 +40,18 @@ const FAQ = ({ data }: { data: FAQData }) => {
               <h3 className="text-xl font-medium" data-tina-field={tinaField(item, 'question')}>
                 {item.question}
               </h3>
-              <FaPlus className="ml-auto" />
+              
+              {activeIndex === index ? (
+                <FaMinus className="ml-auto" />
+              ) : (
+                <FaPlus className="ml-auto" />
+              )}
             </button>
             <div
-              className={`overflow-hidden ${
-                activeIndex === index
-                  ? 'max-h-[500px] opacity-100 transition-all duration-500 ease-in-out'
-                  : 'max-h-0 opacity-0'
-              }`}
+              className={`overflow-hidden`}
               style={{
-                transition: activeIndex === index ? 'max-height 500ms ease-in-out, opacity 500ms' : 'none',
+                maxHeight: activeIndex === index ? '500px' : '0',
+                transition: activeIndex === index ? 'max-height 500ms ease-in-out' : 'max-height 0ms ease-in-out',
               }}
             >
               <div className="px-4 pb-4">
