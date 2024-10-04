@@ -9,22 +9,25 @@ interface Block {
   title?: string | null;
   description?: string | null;
   allPlans?: { title: string | null }[] | null;
-  plans?:
-    | {
-        planTier: string | null;
-        planDescription: string | null;
-        price: string | null;
-        subPriceText: string | null;
-        actions: {
-          label: string | null;
-          url: string | null;
-          variant?: string | null;
-          size?: string | null;
-        } | null;
-      }[]
-    | null;
+  plans?: Plan[] | null;
   featureItem?: FeatureItem[];
 }
+
+interface Plan {
+  planTier: string | null;
+  planDescription: string | null;
+  price: string | null;
+  subPriceText: string | null;
+  actions: PlanActions | null;
+}
+
+interface PlanActions {
+  label: string | null;
+  url: string | null;
+  variant?: string | null;
+  size?: string | null;
+}
+
 
 interface BlocksProps {
   blocks: Block[] | null;
