@@ -11,7 +11,7 @@ interface PlanItem {
   planDescription?: string;
   price?: string;
   subPriceText?: string;
-  isReccomended?: boolean;
+  isRecommended?: boolean;
   actions?: {
     label?: string;
   };
@@ -38,7 +38,10 @@ export const pricingTemplate: Template = {
       list: true as const,
       ui: {
         itemProps: (item: AllPlanItem) => ({
-          label: item?.title,
+          label: item?.title || "All Plan Item",
+        }),
+        defaultItem: () => ({
+          title: "Default All Plan Title",
         }),
       },
       fields: [
@@ -56,7 +59,17 @@ export const pricingTemplate: Template = {
       list: true as const,
       ui: {
         itemProps: (item: PlanItem) => ({
-          label: item?.planTier,
+          label: item?.planTier || "Plan Item",
+        }),
+        defaultItem: () => ({
+          planTier: "Default Plan Tier",
+          planDescription: "Default Plan Description",
+          price: "Default Price",
+          subPriceText: "Default Sub Price Text",
+          isRecommended: false,
+          actions: {
+            label: "Default Action Label",
+          },
         }),
       },
       fields: [
@@ -67,12 +80,12 @@ export const pricingTemplate: Template = {
         },
         {
           name: "planDescription",
-          label: "priceDescription",
+          label: "Plan Description",
           type: "string",
         },
         {
           name: "price",
-          label: "price",
+          label: "Price",
           type: "string",
         },
         {
@@ -81,8 +94,8 @@ export const pricingTemplate: Template = {
           type: "string",
         },
         {
-          name: "isReccomended",
-          label: "Is this tier reccomended?",
+          name: "isRecommended",
+          label: "Is this tier recommended?",
           type: "boolean",
         },
         {
@@ -92,7 +105,7 @@ export const pricingTemplate: Template = {
           list: false,
           ui: {
             itemProps: (item: { label?: string }) => ({
-              label: item?.label,
+              label: item?.label || "Action Item",
             }),
           },
           fields: [

@@ -20,7 +20,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   const [isSmallOrMediumScreen, setIsSmallOrMediumScreen] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false); // New state for image loading
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
@@ -47,7 +47,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   }, [isUserInteracting, isSmallOrMediumScreen, data?.carouselItems.length]);
 
   useEffect(() => {
-    setImageLoaded(false); // Reset imageLoaded when activeIndex changes
+    setImageLoaded(false);
   }, [activeIndex]);
 
   if (!data || !data.carouselItems || data.carouselItems.length === 0) {
@@ -60,46 +60,45 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   };
 
   const renderMedia = (item: CarouselItem) => {
-  const fileExtension = item.image.split('.').pop()?.toLowerCase();
+    const fileExtension = item.image.split('.').pop()?.toLowerCase();
 
-  if (['gif', 'jpg', 'jpeg', 'png'].includes(fileExtension || '')) {
-    return (
-      <div
-        className={`media-container flex justify-center items-center px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        data-tina-field={tinaField(item, 'image')}
-      >
-        <Image
-          src={item.image}
-          alt="Media item"
-          className="w-full mt-10 rounded-xl"
-          width={2000}
-          height={2000}
-          onLoad={() => setImageLoaded(true)}
-        />
-      </div>
-    );
-  } else if (['mp4', 'webm'].includes(fileExtension || '')) {
-    return (
-      <video
-        autoPlay
-        muted
-        loop
-        className={`media-container w-full h-auto mt-6 rounded-xl shadow-lg px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        data-tina-field={tinaField(item, 'image')}
-        onCanPlayThrough={() => setImageLoaded(true)}
-      >
-        <source src={item.image} type={`video/${fileExtension}`} />
-        Your browser does not support the video tag.
-      </video>
-    );
-  }
-  return null;
-};
-
+    if (['gif', 'jpg', 'jpeg', 'png'].includes(fileExtension || '')) {
+      return (
+        <div
+          className={`media-container flex justify-center items-center px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          data-tina-field={tinaField(item, 'image')}
+        >
+          <Image
+            src={item.image}
+            alt="Media item"
+            className="w-full mt-10 rounded-xl"
+            width={2000}
+            height={2000}
+            onLoad={() => setImageLoaded(true)}
+          />
+        </div>
+      );
+    } else if (['mp4', 'webm'].includes(fileExtension || '')) {
+      return (
+        <video
+          autoPlay
+          muted
+          loop
+          className={`media-container w-full h-auto mt-6 rounded-xl shadow-lg px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          data-tina-field={tinaField(item, 'image')}
+          onCanPlayThrough={() => setImageLoaded(true)}
+        >
+          <source src={item.image} type={`video/${fileExtension}`} />
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
+    return null;
+  };
 
   return (
     <div
@@ -134,29 +133,37 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
       <div className="text-white tab-content mt-10">
         {!isSmallOrMediumScreen ? (
           <div>
-            <h2
-              className="md:text-xl lg:text-3xl font-helvetica"
-              data-tina-field={tinaField(data.carouselItems[activeIndex], 'title')}
-            >
-              {data.carouselItems[activeIndex]?.title || 'No title available'}
-            </h2>
-            <p
-              className="text-base font-helvetica mt-5"
-              data-tina-field={tinaField(data.carouselItems[activeIndex], 'description')}
-            >
-              {data.carouselItems[activeIndex]?.description || 'No description available'}
-            </p>
+            {data.carouselItems[activeIndex]?.title && (
+              <h2
+                className="md:text-xl lg:text-3xl font-helvetica"
+                data-tina-field={tinaField(data.carouselItems[activeIndex], 'title')}
+              >
+                {data.carouselItems[activeIndex].title}
+              </h2>
+            )}
+            {data.carouselItems[activeIndex]?.description && (
+              <p
+                className="text-base font-helvetica mt-5"
+                data-tina-field={tinaField(data.carouselItems[activeIndex], 'description')}
+              >
+                {data.carouselItems[activeIndex].description}
+              </p>
+            )}
             {renderMedia(data.carouselItems[activeIndex])}
           </div>
         ) : (
           data.carouselItems.map((item, index) => (
             <div key={index} className="mt-5">
-              <h2 className="text-2xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
-                {item?.title || 'No title available'}
-              </h2>
-              <p className="text-base font-helvetica mt-4" data-tina-field={tinaField(item, 'description')}>
-                {item?.description || 'No description available'}
-              </p>
+              {item.title && (
+                <h2 className="text-2xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
+                  {item.title}
+                </h2>
+              )}
+              {item.description && (
+                <p className="text-base font-helvetica mt-4" data-tina-field={tinaField(item, 'description')}>
+                  {item.description}
+                </p>
+              )}
               {item.image && renderMedia(item)}
             </div>
           ))

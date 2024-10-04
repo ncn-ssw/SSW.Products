@@ -1,36 +1,37 @@
-import type { Template } from 'tinacms';
+import type { Template } from "tinacms";
 
 export const FAQTemplate: Template = {
-  label: 'FAQ',
-  name: 'faq',
+  label: "FAQ",
+  name: "faq",
   ui: {
     defaultItem: {
-      headline: 'Frequently Asked Questions',
-      text: '',
-      questions: [{ question: '', answer: '' }],
+      headline: "Frequently Asked Questions",
+      text: "",
+      questions: [{ question: "", answer: "" }],
     },
   },
   fields: [
-    { name: 'headline', label: 'Headline', type: 'string' },
+    { name: "headline", label: "Headline", type: "string" },
     {
-      name: 'text',
-      label: 'Text',
-      type: 'string',
-      ui: { component: 'textarea' },
+      name: "text",
+      label: "Text",
+      type: "string",
+      ui: { component: "textarea" },
     },
     {
-      name: 'questions',
-      label: 'Questions',
-      type: 'object',
+      name: "questions",
+      label: "Questions",
+      type: "object",
       list: true,
+      required: true,
       ui: {
         itemProps: (item: { question: string }) => ({
-          label: item?.question || 'New Question',
+          label: item?.question || "New Question",
         }),
       },
       fields: [
-        { name: 'question', label: 'Question', type: 'string' },
-        { name: 'answer', label: 'Answer', type: 'string' },
+        { name: "question", label: "Question", type: "string" },
+        { name: "answer", label: "Answer", type: "string" },
       ],
     },
   ],

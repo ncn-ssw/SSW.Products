@@ -72,7 +72,7 @@ export const FeaturesTemplate: Template = {
             parse: (value: unknown) => !!value,
             format: (value: unknown) => !!value,
           },
-          description: 'When toggled, the media and text content will be reversed.',
+          description: 'When toggled, the media and text content will be swapped.',
         },
       ],
     },

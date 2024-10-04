@@ -6,6 +6,9 @@ export const navigationBarCollection: Collection = {
   name: "navigationBar",
   path: "content/navBars",
   format: "json",
+  defaultItem: () => {
+
+  },
   fields: [
     {
       name: "Logo",
