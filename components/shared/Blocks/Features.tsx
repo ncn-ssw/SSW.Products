@@ -3,6 +3,7 @@ import Actions from "./ActionsButton";
 import { tinaField } from "tinacms/dist/react";
 import Image from "next/image";
 import { Components, TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+import { YouTubeEmbed } from "../YouTubeEmbed";
 
 
 type ActionButton = {
@@ -77,13 +78,7 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
       ) {
         return (
           <div className="w-full h-full flex items-center justify-center">
-            <iframe
-              src={mediaItem.src}
-              title={feature.headline}
-              className="w-full xl:h-[500px] lg:h-[400px] h-[300px] rounded-lg shadow-lg"
-              allowFullScreen
-              data-tina-field={tinaField(mediaItem, "src")}
-            />
+            <YouTubeEmbed src={mediaItem.src}/>
           </div>
         );
       }
@@ -135,10 +130,12 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
   const features =
     data && Array.isArray(data.featureItem) ? data.featureItem : [];
 
+  const sizingClasses = "xl:px-32 3xl:px-60 lg:px-28 md:px-10 pt-32 pb-20"
+
   return (
     <section
       key={"features-" + index}
-      className={`flex flex-col items-center lg:space-y-12 xl:px-32 3xl:px-60 lg:px-28 md:px-10 pt-32 pb-20`}
+      className={`flex flex-col items-center lg:space-y-12 ${sizingClasses}`}
     >
       {features.length > 0 &&
         features.map((feature: FeatureItem, featureIndex: number) => (
