@@ -122,7 +122,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
                 }`}
                 data-tina-field={tinaField(item, 'tabTitle')}
               >
-                <span className="px-2">{item?.tabTitle || 'Untitled'}</span>
+                <span className="px-2">{item?.tabTitle || 'Another Awesome Feature'}</span>
               </button>
             ))}
           </div>

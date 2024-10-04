@@ -25,13 +25,20 @@ export const FeaturesTemplate: Template = {
             label: item?.headline,
           };
         },
+        defaultItem: () => {
+          return { 
+            headline: 'Another awesome feature',
+            text: 'How cool is this feature' 
+          }
+        }
       },
       fields: [
-        { name: 'headline', label: 'Headline', type: 'string' as const },
+        { name: 'headline', label: 'Headline', type: 'string' as const, required: true },
         {
           name: 'text',
           label: 'Text',
           type: 'rich-text' as const,
+          required: true,
          
         },
         {
