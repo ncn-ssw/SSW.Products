@@ -39,12 +39,12 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       case "NavigationBarRightNavItemStringItem":
         return (
           <li key={index} className="flex items-center pt-2 lg:px-10 xl:px-0 md:px-6 px-4">
-            <a
+            <Link
               href={item.href}
               className="hover:underline md:text-xl font-helvetica"
             >
               {item.label}
-            </a>
+            </Link>
           </li>
         );
 
@@ -57,9 +57,9 @@ export default function NavBarClient({ results }: NavBarClientProps) {
               {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {item.items?.map((subItem: any, subIndex: number) => (
                 <li key={subIndex}>
-                  <a href={subItem.href} className="hover:underline">
+                  <Link href={subItem.href} className="hover:underline">
                     {subItem.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -101,7 +101,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       <nav
         className={`${
           scrolled
-            ? 'bg-[rgba(51,51,51,0.9)] backdrop-blur-md'
+            ? 'bg-stone-700 bg-opacity-90 backdrop-blur-md'
             : 'bg-transparent'
         } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[120px]`}
       >

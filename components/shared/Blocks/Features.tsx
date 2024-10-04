@@ -15,7 +15,6 @@ type ActionButton = {
 export type FeatureItem = {
   headline: string;
   text: TinaMarkdownContent;
-  paragraph2?: string;
   buttons: ActionButton[];
   media: Array<{
     __typename: string;
