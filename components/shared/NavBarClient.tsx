@@ -87,7 +87,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       case "NavigationBarRightNavItemBookingButton":
         return (
           <li key={index} className="flex items-center">
-            <BookingButton title={item.Title} />
+            <BookingButton title={item.Title} jotFormId={item.JotFormId} />
           </li>
         );
 

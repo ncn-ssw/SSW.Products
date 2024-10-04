@@ -1,14 +1,19 @@
 import { Template } from "tinacms";
 
-export const bookingButtonSchema: Template = {
+export const jotFormBookingButtonSchema: Template = {
     name: 'BookingButton',
-    label: 'Booking Button',
+    label: 'JotForm Booking Button',
     fields: [
         {
             type: 'string',
             label: 'Title',
             name: 'Title',
         },
+        {
+            name: 'JotFormId',
+            label: 'JotFormId',
+            type: 'string'
+        }
         
     ]
 

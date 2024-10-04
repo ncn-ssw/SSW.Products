@@ -1,6 +1,6 @@
-import { Template } from 'tinacms';
-import { actionsButtonTemplate } from './ActionsButton.template';
-import { bookingButtonSchema } from './BookingButtom.template';
+import { Template } from "tinacms";
+import { actionsButtonTemplate } from "./ActionsButton.template";
+import { jotFormBookingButtonSchema } from "./BookingButtom.template";
 
 interface AllPlanItem {
   title?: string;
@@ -18,23 +18,23 @@ interface PlanItem {
 }
 
 export const pricingTemplate: Template = {
-  label: 'Pricing',
-  name: 'pricing',
+  label: "Pricing",
+  name: "pricing",
   fields: [
     {
-      name: 'title',
-      label: 'Title',
-      type: 'string' as const,
+      name: "title",
+      label: "Title",
+      type: "string" as const,
     },
     {
-      name: 'description',
-      label: 'Description',
-      type: 'rich-text',
+      name: "description",
+      label: "Description",
+      type: "rich-text",
     },
     {
-      name: 'allPlans',
-      label: 'Items included in all plans',
-      type: 'object',
+      name: "allPlans",
+      label: "Items included in all plans",
+      type: "object",
       list: true as const,
       ui: {
         itemProps: (item: AllPlanItem) => ({
@@ -43,16 +43,16 @@ export const pricingTemplate: Template = {
       },
       fields: [
         {
-          name: 'title',
-          label: 'Title',
-          type: 'string' as const,
+          name: "title",
+          label: "Title",
+          type: "string" as const,
         },
       ],
     },
     {
-      name: 'plans',
-      label: 'Plans',
-      type: 'object',
+      name: "plans",
+      label: "Plans",
+      type: "object",
       list: true as const,
       ui: {
         itemProps: (item: PlanItem) => ({
@@ -61,34 +61,34 @@ export const pricingTemplate: Template = {
       },
       fields: [
         {
-          name: 'planTier',
-          label: 'Plan Tier',
-          type: 'string',
+          name: "planTier",
+          label: "Plan Tier",
+          type: "string",
         },
         {
-          name: 'planDescription',
-          label: 'priceDescription',
-          type: 'string',
+          name: "planDescription",
+          label: "priceDescription",
+          type: "string",
         },
         {
-          name: 'price',
-          label: 'price',
-          type: 'string',
+          name: "price",
+          label: "price",
+          type: "string",
         },
         {
-          name: 'subPriceText',
-          label: 'Price under Text',
-          type: 'string',
+          name: "subPriceText",
+          label: "Price under Text",
+          type: "string",
         },
         {
-          name: 'isReccomended',
-          label: 'Is this tier reccomended?',
-          type: 'boolean',
+          name: "isReccomended",
+          label: "Is this tier reccomended?",
+          type: "boolean",
         },
         {
-          name: 'actions',
-          label: 'Actions',
-          type: 'object',
+          name: "actions",
+          label: "Actions",
+          type: "object",
           list: false,
           ui: {
             itemProps: (item: { label?: string }) => ({
@@ -97,7 +97,7 @@ export const pricingTemplate: Template = {
           },
           fields: [
             ...actionsButtonTemplate.fields,
-            ...bookingButtonSchema.fields,
+            ...jotFormBookingButtonSchema.fields,
           ],
         },
       ],

@@ -1,42 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import Modal from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
+
 
 interface BookingButtonProps {
   title: string;
+  jotFormId: string
 }
 
-export const BookingButton = ({ title }: BookingButtonProps) => {
+export const BookingButton = ({ title, jotFormId }: BookingButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [iframeHeight, setIframeHeight] = useState('500px');
 
-  const openModal = () => {
-    setIsOpen(true);
-    updateIframeHeight();
-  };
-  
+  const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
-
-  const updateIframeHeight = () => {
-    const windowHeight = window.innerHeight;
-    const calculatedHeight = windowHeight * 0.8; 
-    setIframeHeight(`${calculatedHeight}px`);
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('resize', updateIframeHeight);
-      document.body.classList.add('overflow-hidden'); // Disable scrolling when modal is open
-    } else {
-      window.removeEventListener('resize', updateIframeHeight);
-      document.body.classList.remove('overflow-hidden'); // Enable scrolling when modal is closed
-    }
-
-    return () => {
-      window.removeEventListener('resize', updateIframeHeight);
-      document.body.classList.remove('overflow-hidden'); // Clean up in case modal is closed
-    };
-  }, [isOpen]);
-  
-  const bookingId = process.env.NEXT_PUBLIC_JOTFORM_BOOKING_ID
   return (
     <div>
       <button
@@ -46,25 +22,15 @@ export const BookingButton = ({ title }: BookingButtonProps) => {
         {title}
       </button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-4 w-full max-w-2xl">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">{title}</h2>
-              <button onClick={closeModal} className="text-gray-500 hover:text-gray-700">
-                &#x2715;
-              </button>
-            </div>
-            <iframe
-              title="JotForm"
-              src={`https://form.jotform.com/${bookingId}`}
-              width="100%"
-              height={iframeHeight}
-              style={{ border: 'none' }}
-            />
-          </div>
-        </div>
-      )}
+
+      <Modal open={isOpen} onClose={closeModal} center>
+        <iframe
+        title="jotform"
+        src={`https://form.jotform.com/${jotFormId}`}
+        width="100%"
+        className='p-4 lg:w-[40rem] lg:h-[50rem] w-[30rem] h-[40rem] overflow-hidden'
+        />
+      </Modal>
     </div>
   );
 };
