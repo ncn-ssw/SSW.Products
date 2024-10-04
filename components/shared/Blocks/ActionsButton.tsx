@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { ButtonSize, ButtonVariant } from "./buttonEnum";
 
 type ActionButton = {
   label: string;
   url: string;
-  variant: "solidRed" | "solidWhite" | "outlinedWhite";
-  size: "small" | "medium" | "large";
+  variant: ButtonVariant
+  size: ButtonSize
 };
 
 type ActionsProps = {

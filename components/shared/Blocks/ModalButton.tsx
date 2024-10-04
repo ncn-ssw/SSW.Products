@@ -3,6 +3,7 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { BiArrowBack } from 'react-icons/bi';
 import { tinaField } from 'tinacms/dist/react';
+import { ButtonSize, ButtonVariant } from './buttonEnum';
 
 type ModalKey = 'mockModal1' | 'mockModal2' | 'mockModal3';
 
@@ -17,8 +18,8 @@ type ModalItem = {
   label: string;
   icon?: boolean;
   modal: ModalKey;
-  variant: 'solidRed' | 'solidWhite' | 'outlinedWhite';
-  size: 'small' | 'medium' | 'large';
+  variant: ButtonVariant
+  size: ButtonSize
 };
 
 type ModalBProps = {

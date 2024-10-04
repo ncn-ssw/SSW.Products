@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Actions from './ActionsButton';
 import { tinaField } from 'tinacms/dist/react';
+import { ButtonSize, ButtonVariant } from './buttonEnum';
 
 interface BannerProps {
   data: {
@@ -12,8 +13,8 @@ interface BannerProps {
     buttons: Array<{
       label: string;
       url: string;
-      variant: 'solidRed' | 'solidWhite' | 'outlinedWhite';
-      size: 'small' | 'medium' | 'large';
+      variant: ButtonVariant
+      size: ButtonSize
     }>;
     image: string; 
   };

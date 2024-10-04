@@ -4,13 +4,14 @@ import { tinaField } from "tinacms/dist/react";
 import Image from "next/image";
 import { Components, TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { YouTubeEmbed } from "../YouTubeEmbed";
+import { ButtonSize, ButtonVariant } from "./buttonEnum";
 
 
 type ActionButton = {
   label: string;
   url: string;
-  variant: "solidRed" | "solidWhite" | "outlinedWhite";
-  size: "small" | "medium" | "large";
+  variant: ButtonVariant
+  size: ButtonSize
 };
 
 export type FeatureItem = {
