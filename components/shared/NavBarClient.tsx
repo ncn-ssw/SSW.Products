@@ -103,7 +103,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           scrolled
             ? 'bg-stone-700 bg-opacity-90 backdrop-blur-md'
             : 'bg-transparent'
-        } text-white fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[120px]`}
+        } text-gray-300 fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[120px]`}
       >
         <ul className="md:pl-20 pl-10 flex items-center justify-start h-full space-x-15 xl:space-x-20">
           {logo && (
