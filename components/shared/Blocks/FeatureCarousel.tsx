@@ -22,6 +22,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   const [isSmallOrMediumScreen, setIsSmallOrMediumScreen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  //TODO : refactor small or medium screen https://github.com/SSWConsulting/SSW.Products/issues/14
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
     setIsSmallOrMediumScreen(mediaQuery.matches);
@@ -59,6 +60,8 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     setIsUserInteracting(true);
   };
 
+
+  //TODO : refactor renderMedia https://github.com/SSWConsulting/SSW.Products/issues/13
   const renderMedia = (item: CarouselItem) => {
     const fileExtension = item.image.split('.').pop()?.toLowerCase();
 
