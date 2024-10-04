@@ -33,26 +33,23 @@ export default function FooterClient({ results }: FooterClientProps) {
     setIsVisible(true);
   }, []);
 
-
-
   const footerItems = results?.footer?.footer;
   const footerTitle = results?.footer?.footerTitle;
-  const footerColour = results?.footer?.footerColour || '#000000'; 
+  //Removed #00000 fallback color and replaced with undefined so line 46 doesnt potentially get a null value
+  const footerColour = results?.footer?.footerColour || undefined; 
 
   return (
     <footer
       className={`text-white py-6 transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
-      style={{ backgroundColor: footerColour }}
+      style={{ backgroundColor: footerColour }} 
     >
       <div className="container mx-auto flex justify-between items-center">
-        
-        <div className="pl-6 md:pl-0text-left md:text-sm  text-xs lg:text-base">
+        <div className="pl-6 md:pl-0 text-left md:text-sm text-xs lg:text-base">
           {footerTitle || 'Default Footer Title'}
         </div>
 
-        
         <div className="flex space-x-4 md:pr-0 pr-6">
           {footerItems?.map((item, index) => {
             if (item) {
@@ -64,7 +61,6 @@ export default function FooterClient({ results }: FooterClientProps) {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 md:text-2xl text-lg"
                 >
-                  
                   {item.footerItemIcon && iconMap[item.footerItemIcon]}
                 </a>
               );
