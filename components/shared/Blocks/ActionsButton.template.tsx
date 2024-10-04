@@ -11,7 +11,13 @@ export const actionsButtonTemplate = {
   list: true,
   ui: {
     itemProps: (item: ActionButtonItem) => ({
-      label: item?.label,
+      label: item?.label || 'Default Label',
+    }),
+    defaultItem: () => ({
+      label: 'Default Label',
+      url: '/',
+      variant: 'solidRed',
+      size: 'medium',
     }),
   },
   fields: [
