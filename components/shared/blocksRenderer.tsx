@@ -51,6 +51,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
           );
         }
         return null;
+        //TODO: remove ts-expect error https://github.com/SSWConsulting/SSW.Products/issues/15
       case "PagesPageBlocksFaq":
         // @ts-expect-error investigate after
         return <FAQ key={index} data={block} index={index} />;
