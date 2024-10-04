@@ -62,13 +62,7 @@ export const ModalB = ({ items, align = 'left' }: ModalBProps) => {
                 onClick={() => openModal(modal)}
                 data-tina-field={tinaField(item, 'label')}
                 className={`
-                  ${variant === 'solidRed' && 'bg-red-600 text-white'}
-                  ${variant === 'solidWhite' && 'bg-white text-black'}
-                  ${variant === 'outlinedWhite' && 'border border-white text-white'}
-                  ${size === 'small' && 'px-3 py-1 text-sm'}
-                  ${size === 'medium' && 'px-4 py-2 text-base'}
-                  ${size === 'large' && 'px-6 py-3 text-lg'}
-                  rounded transition duration-150 ease-in-out
+                  ${variant} ${size} rounded transition duration-150 ease-in-out
                   hover:opacity-85 flex items-center justify-center
                 `}
               >

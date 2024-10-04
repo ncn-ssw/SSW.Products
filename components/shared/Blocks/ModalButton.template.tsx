@@ -18,6 +18,7 @@ export const modalButtonTemplate = {
   },
   fields: [
     ...genericButtonTemplateFields.fields,
+    //If we remove 'as const' TypeScript will infer string[] (the broader type), defining as const aligns with stricter type safety
     { name: 'modal', label: 'Modal', type: 'string' as const, options: modals },
   ],
 };

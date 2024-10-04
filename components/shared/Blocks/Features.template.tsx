@@ -66,7 +66,7 @@ export const FeaturesTemplate: Template = {
             {
               name: 'externalVideo',
               label: 'External Video',
-              fields: [{ name: 'src', label: 'src', type: 'string' }],
+              fields: [{ name: 'src', label: 'URL', type: 'string', description: 'This is used for videos we embed, such as YouTube embed links.' }],
             },
           ],
         },
