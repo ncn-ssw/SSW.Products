@@ -15,6 +15,7 @@ module.exports = {
       },
       colors: {
         SSW_Red: '#CC4141',
+        SSW_Charcoal: '#333333',
       },
     },
   },
