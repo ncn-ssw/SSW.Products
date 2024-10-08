@@ -2,8 +2,98 @@
   "title": "test-YakShaver",
   "pageBlocks": [
     {
-      "title": "now again",
-      "_template": "ExampleHero"
+      "featureItem": [
+        {
+          "headline": "Stop Wasting Time - Start Solving Problems",
+          "text": "Don't waste another minute figuring out who can fix the problem. With YakShaver, the right person gets notified instantly, saving you hours of frustration\n",
+          "buttons": [
+            {
+              "label": "BOOK A DEMO",
+              "variant": "solidRed",
+              "size": "large",
+              "url": "https://outlook.office.com/bookwithme/user/97ccb01d46744eed9ad7ff2c52c3ade6@ssw.com.au/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ep=mlink",
+              "_template": "actions"
+            }
+          ],
+          "media": [
+            {
+              "src": "https://www.youtube.com/embed/CBes1SEvV54?si=3sbKzoXG0GLiPvc6",
+              "_template": "externalVideo"
+            }
+          ],
+          "isReversed": false
+        }
+      ],
+      "_template": "features"
+    },
+    {
+      "carouselItems": [
+        {
+          "tabTitle": "Auto Delegation",
+          "title": "Auto Delegation",
+          "description": "Effortlessly assigns tasks to the correct team member based on their responsibilities or expertise ",
+          "image": "/YakShaver/Features/Auto Delegation 5.png"
+        },
+        {
+          "tabTitle": "Seamless Integration",
+          "title": "Seamless Integration",
+          "description": "Connect with your tools for smooth communicaiton such as Microsoft Teams",
+          "image": "/YakShaver/Features/Seamless Integration 3.png"
+        },
+        {
+          "tabTitle": "Time Saving Automation",
+          "title": "Time Saving Automation",
+          "description": "Remove bottlenecks and reduce downtime by eliminating the task of figuring out responsiblity",
+          "image": "/YakShaver/Features/Time Saving Automation 5.png"
+        },
+        {
+          "tabTitle": "Real-Time PBIs",
+          "title": "Real-Time PBIs",
+          "description": "Stay updated instantly with alerts when PBIs have been assigned, completed or require follow-up",
+          "image": "/YakShaver/Features/Detailed Work Items 5.png"
+        }
+      ],
+      "_template": "featureCarousel"
+    },
+    {
+      "headline": "Frequently Asked Questions",
+      "text": "",
+      "questions": [
+        {
+          "question": "Lorem ipsum dolor sit amet?",
+          "answer": "hehe answer"
+        },
+        {
+          "question": "Lorem ipsum dolor sit amet?",
+          "answer": "hehe answer"
+        },
+        {
+          "question": "Lorem ipsum dolor sit amet?",
+          "answer": "hehe answer"
+        },
+        {
+          "question": "Lorem ipsum dolor sit amet?",
+          "answer": "hehe answer"
+        }
+      ],
+      "_template": "faq"
+    },
+    {
+      "backgroundColour": "#080808",
+      "textColour": "#FFFFFF",
+      "headline": "Talk to a YakShaver Expert",
+      "text": "Evaluating YakShaver for your project? Book a 30-minute call with a YakShaver architect",
+      "buttons": [
+        {
+          "label": "SCHEDULE CALL",
+          "variant": "solidRed",
+          "size": "medium",
+          "url": "/",
+          "_template": "actions"
+        }
+      ],
+      "image": "/YakShaver/UlyPoint.png",
+      "_template": "Banner"
     }
   ]
 }

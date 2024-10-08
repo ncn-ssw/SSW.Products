@@ -23,7 +23,7 @@ export default function HomePageClient({
   });
 
   return (
-    <div className="pt-40 px-80">
+    <div className="lg:pt-30 md:pt-10 mx-auto w-full">
       <BlocksRenderer
         data={{ pageBlocks: tinaData.data.pages.pageBlocks ?? null }}
       />
