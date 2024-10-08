@@ -14,8 +14,10 @@ module.exports = {
         '3xl': '1920px',
       },
       colors: {
-        SSW_Red: '#CC4141',
-        SSW_Charcoal: '#333333',
+        ssw: {
+          red: '#CC4141',
+          charcoal: '#333333'
+        }
       },
     },
   },
