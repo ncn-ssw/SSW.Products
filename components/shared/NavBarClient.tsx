@@ -41,7 +41,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           <li key={index} className="flex items-center pt-2 lg:px-10 xl:px-0 md:px-6 px-4">
             <Link
               href={item.href}
-              className="hover:underline md:text-xl font-helvetica"
+              className="hover:underline md:text-xl"
             >
               {item.label}
             </Link>

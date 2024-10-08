@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
-import { tinaField } from 'tinacms/dist/react';
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { tinaField } from "tinacms/dist/react";
 
 interface CarouselItem {
   tabTitle: string;
@@ -24,16 +24,16 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
 
   //TODO : refactor small or medium screen https://github.com/SSWConsulting/SSW.Products/issues/14
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
     setIsSmallOrMediumScreen(mediaQuery.matches);
 
     const handleMediaChange = (e: MediaQueryListEvent) => {
       setIsSmallOrMediumScreen(e.matches);
     };
 
-    mediaQuery.addEventListener('change', handleMediaChange);
+    mediaQuery.addEventListener("change", handleMediaChange);
     return () => {
-      mediaQuery.removeEventListener('change', handleMediaChange);
+      mediaQuery.removeEventListener("change", handleMediaChange);
     };
   }, []);
 
@@ -41,7 +41,9 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     if (isUserInteracting || isSmallOrMediumScreen) return;
 
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % (data?.carouselItems.length || 1));
+      setActiveIndex(
+        (prevIndex) => (prevIndex + 1) % (data?.carouselItems.length || 1)
+      );
     }, 5000);
 
     return () => clearInterval(interval);
@@ -60,18 +62,17 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     setIsUserInteracting(true);
   };
 
-
   //TODO : refactor renderMedia https://github.com/SSWConsulting/SSW.Products/issues/13
   const renderMedia = (item: CarouselItem) => {
-    const fileExtension = item.image.split('.').pop()?.toLowerCase();
+    const fileExtension = item.image.split(".").pop()?.toLowerCase();
 
-    if (['gif', 'jpg', 'jpeg', 'png'].includes(fileExtension || '')) {
+    if (["gif", "jpg", "jpeg", "png"].includes(fileExtension || "")) {
       return (
         <div
           className={`media-container flex justify-center items-center px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
+            imageLoaded ? "opacity-100" : "opacity-0"
           }`}
-          data-tina-field={tinaField(item, 'image')}
+          data-tina-field={tinaField(item, "image")}
         >
           <Image
             src={item.image}
@@ -83,16 +84,16 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           />
         </div>
       );
-    } else if (['mp4', 'webm'].includes(fileExtension || '')) {
+    } else if (["mp4", "webm"].includes(fileExtension || "")) {
       return (
         <video
           autoPlay
           muted
           loop
           className={`media-container w-full h-auto mt-6 rounded-xl shadow-lg px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
+            imageLoaded ? "opacity-100" : "opacity-0"
           }`}
-          data-tina-field={tinaField(item, 'image')}
+          data-tina-field={tinaField(item, "image")}
           onCanPlayThrough={() => setImageLoaded(true)}
         >
           <source src={item.image} type={`video/${fileExtension}`} />
@@ -106,7 +107,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
   return (
     <div
       className="feature-carousel text-center mb-20 px-4 md:px-0 xl:mt-40 lg:mt-40 xl:px-40"
-      data-tina-field={tinaField(data, 'carouselItems')}
+      data-tina-field={tinaField(data, "carouselItems")}
     >
       {!isSmallOrMediumScreen ? (
         <div className="flex justify-center mb-4">
@@ -115,14 +116,16 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
               <button
                 key={index}
                 onClick={() => handleTabClick(index)}
-                className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl font-helvetica md:text-lg text-md rounded-xl ${
+                className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl  md:text-lg text-md rounded-xl ${
                   activeIndex === index
-                    ? 'text-black bg-white'
-                    : 'text-white bg-black hover:bg-zinc-700'
+                    ? "text-black bg-white"
+                    : "text-white bg-black hover:bg-zinc-700"
                 }`}
-                data-tina-field={tinaField(item, 'tabTitle')}
+                data-tina-field={tinaField(item, "tabTitle")}
               >
-                <span className="px-2">{item?.tabTitle || 'Another Awesome Feature'}</span>
+                <span className="px-2">
+                  {item?.tabTitle || "Another Awesome Feature"}
+                </span>
               </button>
             ))}
           </div>
@@ -138,16 +141,22 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           <div>
             {data.carouselItems[activeIndex]?.title && (
               <h2
-                className="md:text-xl lg:text-3xl font-helvetica"
-                data-tina-field={tinaField(data.carouselItems[activeIndex], 'title')}
+                className="md:text-xl lg:text-3xl "
+                data-tina-field={tinaField(
+                  data.carouselItems[activeIndex],
+                  "title"
+                )}
               >
                 {data.carouselItems[activeIndex].title}
               </h2>
             )}
             {data.carouselItems[activeIndex]?.description && (
               <p
-                className="text-base font-helvetica mt-5"
-                data-tina-field={tinaField(data.carouselItems[activeIndex], 'description')}
+                className="text-base  mt-5"
+                data-tina-field={tinaField(
+                  data.carouselItems[activeIndex],
+                  "description"
+                )}
               >
                 {data.carouselItems[activeIndex].description}
               </p>
@@ -158,12 +167,18 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           data.carouselItems.map((item, index) => (
             <div key={index} className="mt-5">
               {item.title && (
-                <h2 className="text-2xl lg:text-3xl font-helvetica" data-tina-field={tinaField(item, 'title')}>
+                <h2
+                  className="text-2xl lg:text-3xl "
+                  data-tina-field={tinaField(item, "title")}
+                >
                   {item.title}
                 </h2>
               )}
               {item.description && (
-                <p className="text-base font-helvetica mt-4" data-tina-field={tinaField(item, 'description')}>
+                <p
+                  className="text-base  mt-4"
+                  data-tina-field={tinaField(item, "description")}
+                >
                   {item.description}
                 </p>
               )}

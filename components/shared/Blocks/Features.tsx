@@ -2,16 +2,19 @@ import React from "react";
 import Actions from "./ActionsButton";
 import { tinaField } from "tinacms/dist/react";
 import Image from "next/image";
-import { Components, TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+import {
+  Components,
+  TinaMarkdown,
+  TinaMarkdownContent,
+} from "tinacms/dist/rich-text";
 import { YouTubeEmbed } from "../YouTubeEmbed";
 import { ButtonSize, ButtonVariant } from "./buttonEnum";
-
 
 type ActionButton = {
   label: string;
   url: string;
-  variant: ButtonVariant
-  size: ButtonSize
+  variant: ButtonVariant;
+  size: ButtonSize;
 };
 
 export type FeatureItem = {
@@ -27,28 +30,26 @@ export type FeatureItem = {
   hasBackground: boolean;
 };
 
-
-export const featureComponents: Components<Record<string, unknown>> = { 
+export const featureComponents: Components<Record<string, unknown>> = {
   //@ts-expect-error investigate type err
   p: (props: React.HTMLProps<HTMLParagraphElement>) => (
     <p
-      className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
+      className="mb-4 text-white  leading-relaxed lg:text-lg md:text-md"
       //@ts-expect-error investigate type err
-      data-tina-field={tinaField(props, 'text')}
+      data-tina-field={tinaField(props, "text")}
       {...props}
     />
   ),
   //@ts-expect-error investigate type err
   span: (props: React.HTMLProps<HTMLSpanElement>) => (
     <span
-      className="mb-4 text-white font-helvetica leading-relaxed lg:text-lg md:text-md"
+      className="mb-4 text-white  leading-relaxed lg:text-lg md:text-md"
       //@ts-expect-error investigate type err
-      data-tina-field={tinaField(props, 'text')}
+      data-tina-field={tinaField(props, "text")}
       {...props}
     />
   ),
 };
-
 
 const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
   const renderMedia = () => {
@@ -79,7 +80,7 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
       ) {
         return (
           <div className="w-full h-full flex items-center justify-center">
-            <YouTubeEmbed src={mediaItem.src}/>
+            <YouTubeEmbed src={mediaItem.src} />
           </div>
         );
       }
@@ -95,15 +96,13 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
     >
       <div className="lg:w-2/7 w-full flex flex-col gap-2">
         <h2
-          className="xl:text-5xl lg:text-4xl md:text-4xl text-4xl text-white font-helvetica tracking-wide"
+          className="xl:text-5xl lg:text-4xl md:text-4xl text-4xl text-white  tracking-wide"
           data-tina-field={tinaField(feature, "headline")}
         >
           {feature.headline}
         </h2>
-        <div>
-          
-        </div>
-        <TinaMarkdown content={feature.text} components={featureComponents}/>
+        <div></div>
+        <TinaMarkdown content={feature.text} components={featureComponents} />
         <div className="flex flex-col lg:flex-row lg:justify-start lg:items-center gap-4 xl:gap-0">
           {feature.buttons?.map((button, index) => (
             <Actions key={index} actions={[button]} />
@@ -131,7 +130,7 @@ const FeatureBlocks = ({ data, index }: FeatureBlocksProps) => {
   const features =
     data && Array.isArray(data.featureItem) ? data.featureItem : [];
 
-  const sizingClasses = "xl:px-32 3xl:px-60 lg:px-28 md:px-10 pt-32 pb-20"
+  const sizingClasses = "xl:px-32 3xl:px-60 lg:px-28 md:px-10 pt-32 pb-20";
 
   return (
     <section
