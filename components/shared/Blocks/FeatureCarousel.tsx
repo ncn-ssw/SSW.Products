@@ -165,7 +165,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           </div>
         ) : (
           data.carouselItems.map((item, index) => (
-            <div key={index} className="mt-5">
+            <div key={index} className="mt-5 pb-8">
               {item.title && (
                 <h2
                   className="text-2xl lg:text-3xl "
@@ -176,7 +176,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
               )}
               {item.description && (
                 <p
-                  className="text-base  mt-4"
+                  className="text-base  mt-4 px-8"
                   data-tina-field={tinaField(item, "description")}
                 >
                   {item.description}
