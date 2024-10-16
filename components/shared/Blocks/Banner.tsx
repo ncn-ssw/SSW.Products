@@ -21,6 +21,7 @@ interface BannerProps {
 }
 
 const Banner = ({ data }: { data: BannerProps["data"] }) => {
+
   const gradientBackground = `linear-gradient(135deg, ${data.backgroundColour}33, ${data.backgroundColour})`;
 
   return (
