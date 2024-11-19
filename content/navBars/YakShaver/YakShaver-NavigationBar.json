@@ -15,6 +15,11 @@
       "label": "Blog",
       "href": "/blog",
       "_template": "stringItem"
+    },
+    {
+      "label": "Videos",
+      "href": "https://www.youtube.com/@SSWYakShaver",
+      "_template": "stringItem"
     }
   ],
   "rightNavItem": [
