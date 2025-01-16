@@ -10,13 +10,11 @@ import { getDocsForProduct } from "../../utils/fetchDocs";
 
 const DocsCard = ({
   title,
-  author,
   date,
   body,
   blogPostLink: docPostLink,
 }: {
   title: string;
-  author: string;
   date: string;
   body: TinaMarkdownContent;
   blogPostLink: string;
@@ -28,7 +26,6 @@ const DocsCard = ({
       <div className="mx-8 md:mx-20 lg:mx-40 p-6 rounded-2xl shadow-2xl bg-stone-700/30 mb-6 text-white border-opacity-15 border-2 hover:border-opacity-85 border-slate-300">
         <h2 className="text-2xl mb-2 tracking-wider">{title}</h2>
         <div className="font-light text-base">
-          <span>by {author} </span>
           <div>
             <span>{`${new Date(date).getDate()} ${new Date(date).toLocaleString(
               "default",
@@ -112,7 +109,6 @@ export default function DocsIndexClient({
           <DocsCard
             key={index}
             title={blog.title}
-            author={blog.author}
             date={blog.date}
             body={blog.body}
             blogPostLink={blog._sys.filename}
