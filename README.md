@@ -16,6 +16,8 @@ yarn install
 
 ```
 
+**Note for Windows**: Remove `TINA_PUBLIC_IS_LOCAL=true` from `package.json`, only keeping the `tinacms` command.
+
 3. Run the development server:
 
 ```bash
