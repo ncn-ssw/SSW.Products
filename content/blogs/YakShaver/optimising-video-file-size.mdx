@@ -1,0 +1,30 @@
+---
+title: Optimising File Sizes for YakShaver
+date: '2025-02-06T13:00:00.000Z'
+author: Lewis Toh
+sswPeopleLink: 'https://www.ssw.com.au/people/lewis-toh/'
+readLength: 2 min
+---
+
+YakShaver now can process videos greater than 25MB! This means longer and higher quality videos will now be able to be processed through YakShaver, resulting in better quality work items or emails!
+
+#### Why 25MB limit in the first place?
+
+We are using [Azure OpenAI's Whisper AI model](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/whisper-overview), which currently has a 25MB file size limit
+
+#### Azure OpenAI's Whisper AI model allows you to [batch transcribe](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/batch-transcription), why not do that?
+
+Giving no hard limits on the size and truncating the video into 25MB chunks to be batched process is not a great idea in the long run. It can be used to waste a great amount of processing power and can be easily abused to be sent an extremely large file if no checks are in place.
+
+Furthermore, this feature requires your video files to be stored in blob storage, which means greater costs in order to process longer videos.
+
+#### How did we overcome this 25MB limit?
+
+The short answer is we didn't, we just removed the parts that Whisper doesn't need - the visuals that take up the majority of bytes in a video file.
+
+We use a library that implements [FFmpeg](https://ffmpeg.org/) in code, called [Xabe.FFmpeg](https://ffmpeg.xabe.net/index.html), which allows us to manipulate and process media files. By extracting only the audio from the video file, we significantly reduce the size to only have the data that matters for a transcription service, the audio.
+
+| Here are some examples of what it has done to the file size before transcription: |
+| --------------------------------------------------------------------------------- |
+| 1-minute video in 4K - 38.87 MB -> 0.62 MB audio .mp3 (1.5% of the video size)    |
+| 30-minute video in 2K - 209.89 MB -> 7.95 MB audio .mp3 (3.8% of the video size)  |
