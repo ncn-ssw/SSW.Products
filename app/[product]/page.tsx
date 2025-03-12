@@ -2,10 +2,12 @@ import client from "../../tina/__generated__/client";
 import HomePageClient from "../../components/shared/HomePageClient";
 import NavBarServer from "../../components/shared/NavBarServer";
 import FooterServer from "../../components/shared/FooterServer";
-import InteractiveBackground from "../../components/shared/Background/InteractiveBackground";
+
+
 import {
   setPageMetadata
 } from "../../utils/setPageMetaData";
+
 interface ProductPageProps {
   params: { product: string };
 }
@@ -23,7 +25,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const productData = await getPage(product);
   return (
     <div>
-      <InteractiveBackground />
       <NavBarServer product={product} />
       <HomePageClient
         query={productData.query}

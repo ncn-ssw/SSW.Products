@@ -24,6 +24,7 @@ export default function HomePageClient({
 
   return (
     <div className="lg:pt-30 md:pt-10 mx-auto w-full">
+      {/* <Hero/> */}
       <BlocksRenderer
         data={{ pageBlocks: tinaData.data.pages.pageBlocks ?? null }}
       />
