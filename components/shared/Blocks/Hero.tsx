@@ -17,22 +17,27 @@ const TranscriptBox = ({ data }: { data: any }) => {
           </div>
           <div className="flex flex-col justify-center">
             <span className="font-semibold lg:text-lg text-sm">
-              {data.leftHandSide?.issueReportTitle}
+              {data?.leftHandSide?.issueReportTitle}
             </span>
+
             <span className="lg:text-sm text-xs text-gray-400">
-              {data.leftHandSide?.issueReportSubTitle}
+              {data?.leftHandSide?.issueReportSubTitle}
+
+            
             </span>
           </div>
         </div>
 
+
         <span className="text-gray-400 font-mono lg:pt-4 pt-2 lg:text-sm text-xs">
-          {data.leftHandSide?.issueReportByline}
+          {data?.leftHandSide?.issueReportByline}
+
         </span>
         {/* Transcript Box */}
         <div className="pt-2 font-mono lg:text-sm text-xs">
           <div className="bg-gradient-to-r to-[#1f1f1f] via-[#1e1e1e] from-[#292929] flex flex-col p-2 rounded-md border border-white/20">
             {/* TODO - figure out how to get colour rendering */}
-            <TinaMarkdown content={data.leftHandSide?.issueReportTranscript} />
+            <TinaMarkdown content={data?.leftHandSide?.issueReportTranscript} />
           </div>
         </div>
         {/* Empty Circle Buttons (for now) */}
@@ -60,19 +65,23 @@ const TranscriptBox = ({ data }: { data: any }) => {
               <FaExpandAlt className="hidden group-hover:block absolute text-[8px] text-black" />
             </div>
             <span className="ml-2 lg:text-sm text-xs">
-              {data.rightHandSide?.issueReportSummaryTitle}
+              {data?.rightHandSide?.issueReportSummaryTitle}
             </span>
             <span className="ml-auto text-gray-400 lg:text-sm text-xs">
               v2.4.1
             </span>
           </div>
           {/* Content Box */}
+
           <div className="rounded-b-lg border-b w-full border-r border-l border-white/20 bg-gradient-to-r to-[#1f1f1f] via-[#1e1e1e] px-4 py-2 flex flex-col gap-2">
             <span className="pt-4 lg:text-sm text-xs">
-              {data.rightHandSide?.issueReportSummarySubtitle}
+              {data?.rightHandSide?.issueReportSummarySubtitle}
             </span>
-            <div className="flex flex-col bg-[#1f1f1f] py-3 px-3 rounded-lg gap-2 relative lg:text-sm text-xs border-white/50 border">
-              <TinaMarkdown content={data.rightHandSide.issueReportBody} />
+            <div className="flex flex-col  bg-gray-800 py-3 px-2 rounded-lg gap-2 relative lg:text-sm text-xs">
+              {/* Chat tab indicator */}
+              
+              <TinaMarkdown content={data?.rightHandSide?.issueReportBody} />
+
             </div>
             <div className="flex justify-end items-end py-4">
               <div className="bg-red-700 text-xs py-1 px-2 rounded-md">
@@ -89,7 +98,7 @@ const TranscriptBox = ({ data }: { data: any }) => {
 // This is a work-around for not using markdown. Its a custom 'MDX component' but cant use markdown so we are using a plain string
 // "{ }" indicates text to be highlighted
 const curlyBracketFormatter = (byLine: string) => {
-  return byLine.split(/({.*?})/).map((part, index) =>
+  return byLine?.split(/({.*?})/).map((part, index) =>
     part.startsWith("{") && part.endsWith("}") ? (
       <span
         key={index}
@@ -108,62 +117,67 @@ export default function Hero({ data }: { data: any }) {
     <div className="flex items-center justify-center mx-auto pb-20 relative overflow-hidden pt-20 md:pt-20">
       {/* Background Yak SVG */}
       <div className="absolute inset-0 z-0 flex justify-end items-center opacity-50 overflow-visible">
-        <div className="w-[800px] h-[800px] translate-x-1/4">
-          <Image
-            src="/svg/yak-icon-fill-glow.svg"
-            alt="Yak Icon Background"
-            width={1000}
-            height={1000}
-            className="w-full h-full"
-          />
-        </div>
+        {data?.backgroundImageEnabled && (
+          <div className="w-[800px] h-[800px] translate-x-1/4">
+            <Image
+              src="/svg/yak-icon-fill-glow.svg"
+              alt="Yak Icon Background"
+              width={1000}
+              height={1000}
+              className="w-full h-full"
+            />
+          </div>
+        )}
       </div>
 
       {/* Content (z-10 to appear above the background) */}
       <div className="z-10 flex flex-col items-center justify-center w-full">
         <div className="flex flex-col font-bold items-center justify-center text-2xl md:text-5xl  text-white">
           <div className="pt-20 flex items-center justify-center gap-2">
-            <h1>{data.titleBeforeRotate}</h1>
+            <h1>{data?.titleBeforeRotate}</h1>
             <span className="text-[#CC4141] pl-1">
-              <WordRotate
-                words={data.rotatingWords}
-                className="text-[#CC4141]"
-              />
+
+              <WordRotate words={data?.rotatingWords} className="" />
+
             </span>
           </div>
           <div>
-            <h1>{data.titleAfterRotate}</h1>
+            <h1>{data?.titleAfterRotate}</h1>
           </div>
         </div>
         <h2 className="text-white text-center text-base md:text-lg pt-6 lg:pt-12 max-w-3xl px-10 lg:px-0">
-          {curlyBracketFormatter(data.byLine)}
+          {curlyBracketFormatter(data?.byLine)}
         </h2>
 
         {/* Buttons */}
         <div className="flex items-center justify-center pt-12 gap-6">
-          {data.ctaLeft?.title && data.ctaLeft?.link && (
+          {data?.ctaLeft?.title && data?.ctaLeft?.link && (
             <div>
+
 
               <ShinyButton href={data.ctaLeft?.link} className="bg-gradient-to-br from-red-500 to-red-800 text-white py-4 px-6 border border-white/20 hover:-top-1 transition-all ease-in-out duration-300 relative top-0">
                 {data.ctaLeft?.title}
+
               </ShinyButton>
             </div>
           )}
-          {data.ctaRight?.title && data.ctaRight?.link && (
+          {data?.ctaRight?.title && data?.ctaRight?.link && (
             <div>
+
 
               <ShinyButton href={data.ctaRight?.link} className="bg-[#131313] text-white py-4 px-6 border border-white/20 hover:-top-1 transition-all ease-in-out duration-300 relative top-0">
                 {data.ctaRight?.title}
+
               </ShinyButton>
             </div>
           )}
         </div>
         <span className="flex justify-center text-white text-center lg:text-sm text-xs pt-4">
-          {data.buttonSubtext}
+          {data?.buttonSubtext}
         </span>
         <div className="flex items-center justify-center pt-12 text-white max-w-6xl w-full">
           {/* Transcript Container */}
-          <TranscriptBox data={data.reportUI} />
+          {data?.reportUIEnabled && <TranscriptBox data={data?.reportUI} />}
         </div>
       </div>
     </div>
