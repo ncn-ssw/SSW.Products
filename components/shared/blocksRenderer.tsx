@@ -17,8 +17,10 @@ import {
 import * as AntIcons from "react-icons/ai";
 import Hero from "./Blocks/Hero";
 import { Timeline } from "./Blocks/Timeline/Timeline";
+import CardAndImageParent from "./Blocks/CardAndImage/CardAndImage";
 import ComparisonTable from "./Blocks/ComparisonTable";
 import CalculatorComponent from "./Blocks/Calculator";
+
 
 interface Block {
   __typename: string;
@@ -53,6 +55,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
 
   return blocks.map((block: Block, index: number) => {
     switch (block.__typename) {
+      
       case "PagesPageBlocksFeatures":
         if (block.featureItem) {
           return (
@@ -110,11 +113,14 @@ const Blocks = ({ blocks }: BlocksProps) => {
           ></Accordion>
         );
       case "PagesPageBlocksTimeline":
-        return <Timeline data={block} />;
+        return <Timeline data={block}/>;
+      case "PagesPageBlocksCardAndImage":
+        return <CardAndImageParent key={index} data={block}/>;
       case "PagesPageBlocksComparisonTable":
         return <ComparisonTable data={block} />;
       case "PagesPageBlocksCalculator":
         return <CalculatorComponent data={block} />;
+
       default:
         return null;
     }

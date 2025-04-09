@@ -11,7 +11,6 @@ export default function TimeSavedCounterBox() {
     fetch("/api/leaderboard") 
       .then((res) => res.json())
       .then((data) => {
-        
         setTimeSaved(data.totalShaves);
       })
       .catch((error) =>

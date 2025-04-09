@@ -42,6 +42,40 @@
       "_template": "hero"
     },
     {
+      "ParentContainerTitle": "{How YakShaver Works}",
+      "ParentContainerDescription": "The YakShaver AI agent analyses recordings, generates the task, and allocates it to the correct team instantly. ",
+      "CardAndImageItem": [
+        {
+          "AboveHeaderText": "{See it}",
+          "Header": "1 - Record a Video",
+          "Description": "Found a bug or have an idea? Record your screen and voice with any app you like\n",
+          "Badge1Text": "Teams",
+          "Badge2Text": "Snipping Tool",
+          "Badge3Text": "Snaggit",
+          "media": "/Browser1.png",
+          "textOnLeft": true
+        },
+        {
+          "AboveHeaderText": "{Shave It}",
+          "Header": "2 - YakShaver Takes Over",
+          "Description": "YakShaver watches your video, turns what you say into text, and figures out what's happening.\n",
+          "media": "/Browser2.png",
+          "textOnLeft": true
+        },
+        {
+          "AboveHeaderText": "{Solve It}",
+          "Header": "3 - Create Tasks for You and Your Team",
+          "Description": "YakShaver takes the insights and:\n\n* **Automatically creates a task, bug report, or feature request** in your team's favourite system (Azure DevOps, GitHub, etc.). If you're not using these systems, YakShaver can send it via email\n* **Populates all fields**, including a descriptive title, description, context and your original video for additional context\n",
+          "Badge1Text": "GitHub",
+          "Badge2Text": "DevOps",
+          "Badge3Text": "Email",
+          "media": "/Browser3.png",
+          "textOnLeft": true
+        }
+      ],
+      "_template": "CardAndImage"
+    },
+    {
       "badge": "Powered by SSW",
       "badgeLink": "https://ssw.com.au",
       "title": "Meet your new assistant, YakShaver",
