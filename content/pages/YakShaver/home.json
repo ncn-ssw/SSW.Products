@@ -24,7 +24,7 @@
         "title": "WATCH VIDEO",
         "link": "https://www.youtube.com/shorts/0TPo98R1tnI"
       },
-      "buttonSubtext": "No credit card required + 14-day free trial",
+      "buttonSubtext": "No credit card required",
       "reportUIEnabled": true,
       "reportUI": {
         "leftHandSide": {
@@ -286,7 +286,7 @@
     },
     {
       "title": "Talk to a YakShaver Expert",
-      "ctaDescription": "Evaluating YakShaver for your project? Book a 30-minute call with a YakShaver architect",
+      "ctaDescription": "Evaluating YakShaver for your team? Book a 30-minute call with a YakShaver architect",
       "ctaButton": {
         "label": "SCHEDULE A CALL",
         "variant": "solidWhite",
