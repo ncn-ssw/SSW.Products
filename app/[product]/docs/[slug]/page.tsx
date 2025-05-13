@@ -1,13 +1,16 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
+import { notFound } from "next/navigation";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import FooterServer from "../../../../components/shared/FooterServer";
 import client from "../../../../tina/__generated__/client";
-import { Docs } from "../../../../tina/__generated__/types";
+import {
+  Docs,
+  DocsTableOfContents,
+} from "../../../../tina/__generated__/types";
 import { setPageMetadata } from "../../../../utils/setPageMetaData";
 import DocPostClient from "./DocPostClient";
-import TableOfContentsClient from "./TableOfContentsClient";
+import { TableOfContentsClient } from "./TableOfContentsClient";
 
 interface DocPostProps {
   params: {
@@ -39,7 +42,7 @@ interface PaginationLink {
 }
 
 function getPaginationData(
-  tableOfContentsData: any,
+  tableOfContentsData: DocsTableOfContents,
   currentSlug: string
 ): { prev: PaginationLink | null; next: PaginationLink | null } {
   const result: { prev: PaginationLink | null; next: PaginationLink | null } = {
@@ -122,7 +125,6 @@ export default async function DocPost({ params }: DocPostProps) {
   }
 
   const paginationData = getPaginationData(tableOfContentsData as any, slug);
-
   return (
     <>
       <div className="grid grid-cols-1 pt-navBarHeight-mobile sm:pt-navBarHeight md:grid-cols-[1.25fr_3fr] lg:grid-cols-[1fr_3fr] max-w-[90rem] mx-auto min-h-screen">

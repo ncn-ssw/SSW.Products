@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
-
 import "ssw-tinacms-landingkit/dist/style.css";
 import NavBarServer from "../../components/shared/NavBarServer";
 import { getGoogleTagId } from "../../utils/getGoogleTagId";
@@ -24,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href={`/favicons/${params.product}.ico`} />
+
         {params?.product === "YakShaver" && (
           <Script
             data-domain="yakshaver.ai"

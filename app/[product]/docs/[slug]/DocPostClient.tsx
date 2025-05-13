@@ -1,16 +1,14 @@
 "use client";
 
+import SearchBox from "@comps/search/SearchBox";
+import { Docs, DocsTableOfContents } from "@tina/__generated__/types";
+import { DocAndBlogMarkdownStyle } from "@tina/tinamarkdownStyles/DocAndBlogMarkdownStyle";
 import Link from "next/link";
-import { MdMenu, MdOutlineKeyboardArrowRight, MdClose } from "react-icons/md";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { DocAndBlogMarkdownStyle } from "../../../../tina/tinamarkdownStyles/DocAndBlogMarkdownStyle";
+import { useEffect, useRef, useState } from "react";
+import { MdClose, MdMenu, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useTina } from "tinacms/dist/react";
-import {
-  Docs,
-  DocsTableOfContents,
-} from "../../../../tina/__generated__/types";
-import { useState, useEffect, useRef } from "react";
-import TableOfContentsClient from "./TableOfContentsClient";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { TableOfContentsClient } from "./TableOfContentsClient";
 
 interface DocPostClientProps {
   query: string;
@@ -91,6 +89,10 @@ export default function DocPostClient({
   return (
     <div className="mx-auto text-white">
       <div className="md:hidden flex flex-col justify-center items-center py-4 relative">
+        <SearchBox
+          className="w-full"
+          index={tableOfContentsData.algoliaSearchIndex ?? ""}
+        />
         <button
           ref={buttonRef}
           className="flex justify-center items-center gap-2 w-full text-white/60 hover:text-white transition-all duration-300 bg-white/10 p-2 rounded-lg"
