@@ -184,7 +184,7 @@ const articleListTemplate: Template = {
 };
 
 export const blogIndexCollection: Collection = {
-  path: "content/indexPages/",
+  path: "content/indexPages",
   format: "json",
   label: "Blog Index",
   name: "blogsIndex",

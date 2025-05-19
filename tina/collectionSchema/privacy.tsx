@@ -11,7 +11,7 @@ export const privacyPolicyCollection: Collection = {
     },
   },
   name: "privacy",
-  path: "content/privacy/",
+  path: "content/privacy",
   format: "mdx",
   fields: [
     seoInformation as TinaField,

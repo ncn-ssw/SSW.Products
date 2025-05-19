@@ -41,7 +41,7 @@ export const submenuTemplate: Template = {
 export const docsTableOfContentsCollection: Collection = {
   label: "Docs Table of Contents",
   name: "docsTableOfContents",
-  path: "content/docsTableOfContents/",
+  path: "content/docsTableOfContents",
   format: "mdx",
   ui: {
     allowedActions: {
