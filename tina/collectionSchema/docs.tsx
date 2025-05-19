@@ -4,7 +4,7 @@ import { seoInformation } from "../shared/SEOInformation";
 export const docsCollection: Collection = {
   label: "Docs",
   name: "docs",
-  path: "content/docs",
+  path: "content/docs/",
   format: "mdx",
   fields: [
     seoInformation as TinaField,
