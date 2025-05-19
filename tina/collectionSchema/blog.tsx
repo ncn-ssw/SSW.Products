@@ -6,7 +6,7 @@ import { seoInformation } from "../shared/SEOInformation";
 export const blogCollection: Collection = {
   label: "Blog Posts",
   name: "blogs",
-  path: "content/blogs/",
+  path: "content/blogs",
   format: "mdx",
   defaultItem: () => {
     return {
@@ -184,7 +184,7 @@ const articleListTemplate: Template = {
 };
 
 export const blogIndexCollection: Collection = {
-  path: "content/indexPages",
+  path: "content/indexPages/",
   format: "json",
   label: "Blog Index",
   name: "blogsIndex",
